@@ -1,0 +1,37 @@
+H7 tested on turns with inclusion probability = 1.0
+
+**turns**
+
+Hypothesis: H7
+c2!=c1 -> c1!=c0
+X: c2!=c1
+Y: c1!=c0
+fisher's p_value is : 0.0
+chi^2 p_value is : 0.0
+odd ratio : 11.967047292912776
+statistics power (1-beta): 1.0
+relative risk: 4.4929417400995515
+relative risk 95%: (4.297581050762626, 4.697183192472096) 
+
+X | Y | Frequency
+True | True | 4164 
+True | False | 1946 
+False | True | 1937 
+False | False | 10833 
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+H7 & True & False \\
+\hline \hline
+True & 20502 & 14941 \\
+\hline 
+False & 14932 & 28415 \\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Hypothesis testing of H7}
+\label{table:h7}
+\end{table}

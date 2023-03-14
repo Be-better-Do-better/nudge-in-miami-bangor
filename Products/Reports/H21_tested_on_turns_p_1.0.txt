@@ -1,0 +1,37 @@
+H21 tested on turns with inclusion probability = 1.0
+
+**turns**
+
+Hypothesis: H21
+next cs level is in [1,..,6] if previous cs level was in [1,..,6]
+X: c1 in [1, 2, 3, 4, 5, 6]
+Y: c0 in [1, 2, 3, 4, 5, 6]
+fisher's p_value is : 0.00025586223004215675
+chi^2 p_value is : 0.00018377799456554866
+odd ratio : 1.32430342179734
+statistics power (1-beta): 0.9983326922534014
+relative risk: 1.284087735151565
+relative risk 95%: (1.1293372948664215, 1.460043265251154) 
+
+X | Y | Frequency
+True | True | 234 
+True | False | 1653 
+False | True | 1645 
+False | False | 15389 
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+H21 & True & False \\
+\hline \hline
+True & 373 & 4260 \\
+\hline 
+False & 4254 & 69974 \\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Hypothesis testing of H21}
+\label{table:h21}
+\end{table}

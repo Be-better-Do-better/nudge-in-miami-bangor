@@ -1,0 +1,37 @@
+H5 tested on random_utterances with inclusion probability = 1.0
+
+**random_utterances**
+
+Hypothesis: H5
+Non-backoff condition is followed by a raise up to one level up
+X: not (c1<c2-1 | c1+c3<c2)
+Y: floor(avg(c1,c2,c3))<=c0<=min(floor(avg(c1,c2,c3))+1, 7)
+fisher's p_value is : 0.0
+chi^2 p_value is : 0.0
+odd ratio : 16.39489832338371
+statistics power (1-beta): 1.0
+relative risk: 9.393396500101984
+relative risk 95%: (8.803671354144807, 10.022625136567179) 
+
+X | Y | Frequency
+True | True | 35317 
+True | False | 42338 
+False | True | 882 
+False | False | 17335 
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+H5 & True & False \\
+\hline \hline
+True & 35317 & 42338 \\
+\hline 
+False & 882 & 17335 \\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Hypothesis testing of H5}
+\label{table:h5}
+\end{table}

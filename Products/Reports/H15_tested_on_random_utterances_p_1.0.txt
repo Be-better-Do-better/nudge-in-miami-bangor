@@ -1,0 +1,37 @@
+H15 tested on random_utterances with inclusion probability = 1.0
+
+**random_utterances**
+
+Hypothesis: H15
+next cs level is 0 if previous cs level was 0, 1, 2 or 3
+X: c1 in [0, 1, 2, 3]
+Y: c0 = 0
+fisher's p_value is : 0.0
+chi^2 p_value is : 0.0
+odd ratio : 2.765941272809831
+statistics power (1-beta): 1.0
+relative risk: 1.4920122223346008
+relative risk 95%: (1.4738241320752818, 1.5104247672083353) 
+
+X | Y | Frequency
+True | True | 45982 
+True | False | 17759 
+False | True | 15604 
+False | False | 16669 
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+H15 & True & False \\
+\hline \hline
+True & 45982 & 17759 \\
+\hline 
+False & 15604 & 16669 \\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Hypothesis testing of H15}
+\label{table:h15}
+\end{table}

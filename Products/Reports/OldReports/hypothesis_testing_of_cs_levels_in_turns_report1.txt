@@ -1,0 +1,308 @@
+CS in TURNS
+
+Hypothesis: Backoff is followed by a retreat
+next cs level is lower or 0 (retreat) if backoff condition is met
+X: c1<c2-1 | c1+c3<c2
+Y: c0 = max(0, c1-1)
+fisher's p_value is : 0.0005533138646730872
+chi^2 p_value is : 0.000728190497724461
+odd ratio : 0.49495277449822905
+statistics power (1-beta): 0.9952477515766707
+
+X | Y | Frequency
+True | True | 41 
+True | False | 77 
+False | True | 440 
+False | False | 409 
+
+
+
+Hypothesis: Non-Backoff is followed by a nudge
+Non-backoff condition is followed by a raise up to 3 levels up
+X: not (c1<c2-1 | c1+c3<c2)
+Y: floor(avg(c1,c2,c3))<=c0<=min(floor(avg(c1,c2,c3))+3, 7)
+fisher's p_value is : 1.5203577665966802e-12
+chi^2 p_value is : 3.0144855542269475e-13
+odd ratio : 4.002989969135802
+statistics power (1-beta): 0.9999999997629704
+
+X | Y | Frequency
+True | True | 539 
+True | False | 192 
+False | True | 54 
+False | False | 77 
+
+
+
+Hypothesis: Non-Backoff is followed by a nudge with max of 2 levels up
+Non-backoff condition is followed by a raise up to 2 levels up
+X: not (c1<c2-1 | c1+c3<c2)
+Y: floor(avg(c1,c2,c3))<=c0<=min(floor(avg(c1,c2,c3))+2, 7)
+fisher's p_value is : 3.325537357078517e-30
+chi^2 p_value is : 3.7788126536050856e-30
+odd ratio : 8.934510869565218
+statistics power (1-beta): 1.0
+
+X | Y | Frequency
+True | True | 539 
+True | False | 230 
+False | True | 32 
+False | False | 122 
+
+
+
+Hypothesis: Non-Backoff is followed by a nudge with max of 1 levels up
+Non-backoff condition is followed by a raise up to one level up
+X: not (c1<c2-1 | c1+c3<c2)
+Y: floor(avg(c1,c2,c3))<=c0<=min(floor(avg(c1,c2,c3))+1, 7)
+fisher's p_value is : 2.79584267038519e-26
+chi^2 p_value is : 2.0203721951239829e-25
+odd ratio : 8.670503597122302
+statistics power (1-beta): 1.0
+
+X | Y | Frequency
+True | True | 524 
+True | False | 278 
+False | True | 25 
+False | False | 115 
+
+
+
+Hypothesis: Non-Backoff is followed by a nudge with 0
+Non-backoff condition is followed by a raise up to 0 levels up
+X: not (c1<c2-1 | c1+c3<c2)
+Y: floor(avg(c1,c2,c3))<=c0<=min(floor(avg(c1,c2,c3))+0, 7)
+fisher's p_value is : 8.208269771263614e-40
+chi^2 p_value is : 2.3178615155745995e-35
+odd ratio : 18.29971857410882
+statistics power (1-beta): 1.0
+
+X | Y | Frequency
+True | True | 510 
+True | False | 328 
+False | True | 13 
+False | False | 153 
+
+
+
+Hypothesis: Change is followed by a change
+c2!=c1 -> c1!=c0
+X: c2!=c1
+Y: c1!=c0
+fisher's p_value is : 2.6307449545001746e-74
+chi^2 p_value is : 2.8571558214397268e-74
+odd ratio : 14.64
+statistics power (1-beta): 1.0
+
+X | Y | Frequency
+True | True | 244 
+True | False | 100 
+False | True | 100 
+False | False | 600 
+
+
+
+Hypothesis: Change is followed by a change
+c3!=c2 -> c1!=c0
+X: c3!=c2
+Y: c1!=c0
+fisher's p_value is : 6.224758850198685e-12
+chi^2 p_value is : 4.757612578451998e-12
+odd ratio : 2.6982239942007973
+statistics power (1-beta): 0.9999999992520076
+
+X | Y | Frequency
+True | True | 148 
+True | False | 155 
+False | True | 178 
+False | False | 503 
+
+
+
+Hypothesis: Change is followed by a change
+c4!=c3 -> c1!=c0
+X: c4!=c3
+Y: c1!=c0
+fisher's p_value is : 6.009273624110933e-11
+chi^2 p_value is : 5.021946742327228e-11
+odd ratio : 2.608882189239332
+statistics power (1-beta): 0.9999999946520721
+
+X | Y | Frequency
+True | True | 149 
+True | False | 147 
+False | True | 176 
+False | False | 453 
+
+
+
+Hypothesis: Change is followed by a change
+c21!=c20 -> c1!=c0
+X: c21!=c20
+Y: c1!=c0
+fisher's p_value is : 1.134200928268986e-06
+chi^2 p_value is : 1.21591421270923e-06
+odd ratio : 2.07498504784689
+statistics power (1-beta): 0.999974772615919
+
+X | Y | Frequency
+True | True | 130 
+True | False | 152 
+False | True | 176 
+False | False | 427 
+
+
+
+Hypothesis: Change is followed by a change
+c51!=c50 -> c1!=c0
+X: c51!=c50
+Y: c1!=c0
+fisher's p_value is : 5.612500881030863e-07
+chi^2 p_value is : 4.56434697285408e-07
+odd ratio : 2.2397014361300074
+statistics power (1-beta): 0.9999885341475689
+
+X | Y | Frequency
+True | True | 110 
+True | False | 168 
+False | True | 126 
+False | False | 431 
+
+
+
+Hypothesis: Change is followed by a change
+c101!=c100 -> c1!=c0
+X: c101!=c100
+Y: c1!=c0
+fisher's p_value is : 8.013419423704783e-05
+chi^2 p_value is : 8.583839201404624e-05
+odd ratio : 1.9277724512623842
+statistics power (1-beta): 0.9991821436658033
+
+X | Y | Frequency
+True | True | 104 
+True | False | 126 
+False | True | 149 
+False | False | 348 
+
+
+
+Hypothesis: Backoff is followed by a return to zero
+next cs level is 0 if backoff condition is met
+X: c1<c2-1 | c1+c3<c2
+Y: c0 = 0
+fisher's p_value is : 2.688527267920754e-06
+chi^2 p_value is : 2.107613507427845e-06
+odd ratio : 0.4340160746694322
+statistics power (1-beta): 0.9999552095713806
+
+X | Y | Frequency
+True | True | 72 
+True | False | 87 
+False | True | 532 
+False | False | 279 
+
+
+
+Hypothesis: EN, ET, EL & EP return to EN
+next cs level is 0 if previous cs level was 0, 1, 2 or 3
+X: c1 in [0, 1, 2, 3]
+Y: c0 = 0
+fisher's p_value is : 2.7822491343951902e-55
+chi^2 p_value is : 1.8740190480107355e-54
+odd ratio : 10.104104951333051
+statistics power (1-beta): 1.0
+
+X | Y | Frequency
+True | True | 508 
+True | False | 139 
+False | True | 85 
+False | False | 235 
+
+
+
+Hypothesis: ET, EL & EP return to EN
+next cs level is 0 if previous cs level was 0, 1, 2 or 3
+X: c1 in [1, 2, 3]
+Y: c0 = 0
+fisher's p_value is : 0.11403123617594821
+chi^2 p_value is : 0.1352372284637764
+odd ratio : 1.7576898932831135
+statistics power (1-beta): 0.7942187342506961
+
+X | Y | Frequency
+True | True | 32 
+True | False | 12 
+False | True | 531 
+False | False | 350 
+
+
+
+Hypothesis: SN, ST, SL & SP return to SN
+next cs level is 7 if previous cs level was 4, 5, 6 or 7
+X: c1 in [4, 5, 6, 7]
+Y: c0 = 7
+fisher's p_value is : 8.12139327871581e-55
+chi^2 p_value is : 2.5110784738237214e-56
+odd ratio : 11.892429378531073
+statistics power (1-beta): 1.0
+
+X | Y | Frequency
+True | True | 184 
+True | False | 118 
+False | True | 75 
+False | False | 572 
+
+
+
+Hypothesis: ST, SL & SP return to SN
+next cs level is 7 if previous cs level was 4, 5, or 6
+X: c1 in [4, 5, 6]
+Y: c0 = 7
+fisher's p_value is : 0.00958783118331312
+chi^2 p_value is : 0.011431825108028152
+odd ratio : 2.261603375527426
+statistics power (1-beta): 0.9645324038792474
+
+X | Y | Frequency
+True | True | 20 
+True | False | 25 
+False | True | 237 
+False | False | 670 
+
+
+
+Hypothesis: EN, ET, EL & EP return to EN, ET, EL & EP
+next cs level is 0, 1, 2 or 3 if previous cs level was 0, 1, 2 or 3
+X: c1 in [0, 1, 2, 3]
+Y: c0 in [0, 1, 2, 3]
+fisher's p_value is : 2.3171920301852455e-66
+chi^2 p_value is : 8.006328705089619e-66
+odd ratio : 14.0308106841612
+statistics power (1-beta): 1.0
+
+X | Y | Frequency
+True | True | 523 
+True | False | 88 
+False | True | 97 
+False | False | 229 
+
+
+
+Hypothesis: SN, ST, SL & SP return to SN, ST, SL & SP
+next cs level is 4, 5, 6 or 7 if previous cs level was 4, 5, 6 or 7
+X: c1 in [4, 5, 6, 7]
+Y: c0 in [4, 5, 6, 7]
+fisher's p_value is : 3.8131619319475644e-60
+chi^2 p_value is : 2.1485588429882407e-60
+odd ratio : 13.110731707317074
+statistics power (1-beta): 1.0
+
+X | Y | Frequency
+True | True | 204 
+True | False | 100 
+False | True | 82 
+False | False | 527 
+
+
+

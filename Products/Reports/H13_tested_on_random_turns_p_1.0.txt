@@ -1,0 +1,37 @@
+H13 tested on random_turns with inclusion probability = 1.0
+
+**random_turns**
+
+Hypothesis: H13
+English Major Language is followed by English Major Language
+X: c1 in [0, 1, 2, 3]
+Y: c0 in [0, 1, 2, 3]
+fisher's p_value is : 6.500546849997882e-275
+chi^2 p_value is : 3.93418543437598e-279
+odd ratio : 1.7496542897350416
+statistics power (1-beta): 1.0
+relative risk: 1.2189217962400385
+relative risk 95%: (1.20482715239186, 1.2331813259681648) 
+
+X | Y | Frequency
+True | True | 37150 
+True | False | 15324 
+False | True | 15326 
+False | False | 11061 
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+H13 & True & False \\
+\hline \hline
+True & 37150 & 15324 \\
+\hline 
+False & 15326 & 11061 \\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Hypothesis testing of H13}
+\label{table:h13}
+\end{table}

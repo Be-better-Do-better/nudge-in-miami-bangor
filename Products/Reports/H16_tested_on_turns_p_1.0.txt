@@ -1,0 +1,37 @@
+H16 tested on turns with inclusion probability = 1.0
+
+**turns**
+
+Hypothesis: H16
+next cs level is 7 if previous cs level was 4, 5, 6 or 7
+X: c1 in [4, 5, 6, 7]
+Y: c0 = 7
+fisher's p_value is : 0.0
+chi^2 p_value is : 0.0
+odd ratio : 11.369573377074374
+statistics power (1-beta): 1.0
+relative risk: 5.033635114705662
+relative risk 95%: (4.784363786193934, 5.295893790750891) 
+
+X | Y | Frequency
+True | True | 3784 
+True | False | 2409 
+False | True | 1545 
+False | False | 11183 
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+H16 & True & False \\
+\hline \hline
+True & 10165 & 16222 \\
+\hline 
+False & 14003 & 38471 \\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Hypothesis testing of H16}
+\label{table:h16}
+\end{table}

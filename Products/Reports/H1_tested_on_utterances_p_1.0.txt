@@ -1,0 +1,37 @@
+H1 tested on utterances with inclusion probability = 1.0
+
+**utterances**
+
+Hypothesis: H1
+next cs level is lower or 0 (retreat) if backoff condition is met
+X: c1<c2-1 | c1+c3<c2
+Y: c0 = max(0, c1-1)
+fisher's p_value is : 4.552003352325538e-12
+chi^2 p_value is : 4.3026037201126046e-12
+odd ratio : 0.7867141820817144
+statistics power (1-beta): 0.9999999994599021
+relative risk: 0.8949845731856152
+relative risk 95%: (0.8659387064288965, 0.9250047148758662) 
+
+X | Y | Frequency
+True | True | 1896 
+True | False | 1839 
+False | True | 18296 
+False | False | 13961 
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+H1 & True & False \\
+\hline \hline
+True & 10713 & 7504 \\
+\hline 
+False & 34587 & 43068 \\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Hypothesis testing of H1}
+\label{table:h1}
+\end{table}

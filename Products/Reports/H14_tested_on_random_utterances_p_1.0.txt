@@ -1,0 +1,37 @@
+H14 tested on random_utterances with inclusion probability = 1.0
+
+**random_utterances**
+
+Hypothesis: H14
+Spanish Major Language is followed by Spanish Major Language
+X: c1 in [4, 5, 6, 7]
+Y: c0 in [4, 5, 6, 7]
+fisher's p_value is : 0.0
+chi^2 p_value is : 0.0
+odd ratio : 2.806814354348028
+statistics power (1-beta): 1.0
+relative risk: 1.9169276328668545
+relative risk 95%: (1.8841773655174516, 1.9502471566095707) 
+
+X | Y | Frequency
+True | True | 15895 
+True | False | 16378 
+False | True | 16377 
+False | False | 47364 
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+H14 & True & False \\
+\hline \hline
+True & 15895 & 16378 \\
+\hline 
+False & 16377 & 47364 \\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Hypothesis testing of H14}
+\label{table:h14}
+\end{table}

@@ -1,0 +1,37 @@
+H9 tested on random_turns with inclusion probability = 1.0
+
+**random_turns**
+
+Hypothesis: H9
+c4!=c3 -> c1!=c0
+X: c4!=c3
+Y: c1!=c0
+fisher's p_value is : 2.4004389758903086e-65
+chi^2 p_value is : 2.443390467776605e-65
+odd ratio : 1.2790090482488965
+statistics power (1-beta): 1.0
+relative risk: 1.144175830493305
+relative risk 95%: (1.1266770765160112, 1.1619463627796993) 
+
+X | Y | Frequency
+True | True | 17102 
+True | False | 18287 
+False | True | 18271 
+False | False | 24988 
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+H9 & True & False \\
+\hline \hline
+True & 17102 & 18287 \\
+\hline 
+False & 18271 & 24988 \\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Hypothesis testing of H9}
+\label{table:h9}
+\end{table}

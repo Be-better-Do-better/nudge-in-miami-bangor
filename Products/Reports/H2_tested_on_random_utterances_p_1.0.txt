@@ -1,0 +1,37 @@
+H2 tested on random_utterances with inclusion probability = 1.0
+
+**random_utterances**
+
+Hypothesis: H2
+next cs level is 0 if backoff condition is met
+X: c1<c2-1 | c1+c3<c2
+Y: c0 = 0
+fisher's p_value is : 6.852791926880104e-11
+chi^2 p_value is : 6.303004178849562e-11
+odd ratio : 0.8946529552300174
+statistics power (1-beta): 0.9999999942783427
+relative risk: 0.9600228291982824
+relative risk 95%: (0.9481055487256548, 0.9720899047797501) 
+
+X | Y | Frequency
+True | True | 11304 
+True | False | 6913 
+False | True | 50193 
+False | False | 27462 
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+H2 & True & False \\
+\hline \hline
+True & 11304 & 6913 \\
+\hline 
+False & 50193 & 27462 \\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Hypothesis testing of H2}
+\label{table:h2}
+\end{table}

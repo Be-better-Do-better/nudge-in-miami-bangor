@@ -1,0 +1,37 @@
+H3 tested on random_turns with inclusion probability = 1.0
+
+**random_turns**
+
+Hypothesis: H3
+Non-backoff condition is followed by a raise up to 3 levels up
+X: not (c1<c2-1 | c1+c3<c2)
+Y: floor(avg(c1,c2,c3))<=c0<=min(floor(avg(c1,c2,c3))+3, 7)
+fisher's p_value is : 0.0
+chi^2 p_value is : 0.0
+odd ratio : 3.4837514673727257
+statistics power (1-beta): 1.0
+relative risk: 2.405274569226141
+relative risk 95%: (2.327453252622038, 2.485697939087886) 
+
+X | Y | Frequency
+True | True | 26609 
+True | False | 34672 
+False | True | 3148 
+False | False | 14290 
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+H3 & True & False \\
+\hline \hline
+True & 26609 & 34672 \\
+\hline 
+False & 3148 & 14290 \\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Hypothesis testing of H3}
+\label{table:h3}
+\end{table}

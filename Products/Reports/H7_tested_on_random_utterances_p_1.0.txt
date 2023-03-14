@@ -1,0 +1,37 @@
+H7 tested on random_utterances with inclusion probability = 1.0
+
+**random_utterances**
+
+Hypothesis: H7
+c2!=c1 -> c1!=c0
+X: c2!=c1
+Y: c1!=c0
+fisher's p_value is : 0.0
+chi^2 p_value is : 0.0
+odd ratio : 3.2838011967009018
+statistics power (1-beta): 1.0
+relative risk: 2.0085957003178474
+relative risk 95%: (1.9769966272513728, 2.0406998331324755) 
+
+X | Y | Frequency
+True | True | 20701 
+True | False | 16373 
+False | True | 16365 
+False | False | 42504 
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+H7 & True & False \\
+\hline \hline
+True & 20701 & 16373 \\
+\hline 
+False & 16365 & 42504 \\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Hypothesis testing of H7}
+\label{table:h7}
+\end{table}

@@ -1,0 +1,37 @@
+H20 tested on turns with inclusion probability = 1.0
+
+**turns**
+
+Hypothesis: H20
+next cs level is 0 if previous cs level was 4, 5 or 6
+X: c1 in [4, 5, 6]
+Y: c0 = 0
+fisher's p_value is : 1.7124090381357219e-44
+chi^2 p_value is : 6.183307987716704e-46
+odd ratio : 0.3744
+statistics power (1-beta): 1.0
+relative risk: 0.6180092165898617
+relative risk 95%: (0.5681872317217472, 0.6721998849440111) 
+
+X | Y | Frequency
+True | True | 338 
+True | False | 530 
+False | True | 11375 
+False | False | 6678 
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+H20 & True & False \\
+\hline \hline
+True & 1242 & 980 \\
+\hline 
+False & 48824 & 27815 \\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Hypothesis testing of H20}
+\label{table:h20}
+\end{table}

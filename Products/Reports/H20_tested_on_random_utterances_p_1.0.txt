@@ -1,0 +1,37 @@
+H20 tested on random_utterances with inclusion probability = 1.0
+
+**random_utterances**
+
+Hypothesis: H20
+next cs level is 0 if previous cs level was 4, 5 or 6
+X: c1 in [4, 5, 6]
+Y: c0 = 0
+fisher's p_value is : 2.2157333077929556e-22
+chi^2 p_value is : 5.811626701735628e-23
+odd ratio : 0.6476205402450004
+statistics power (1-beta): 1.0
+relative risk: 0.8376208665261997
+relative risk 95%: (0.8049556240182831, 0.8716116703896286) 
+
+X | Y | Frequency
+True | True | 1135 
+True | False | 970 
+False | True | 60451 
+False | False | 33458 
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+H20 & True & False \\
+\hline \hline
+True & 1135 & 970 \\
+\hline 
+False & 60451 & 33458 \\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Hypothesis testing of H20}
+\label{table:h20}
+\end{table}

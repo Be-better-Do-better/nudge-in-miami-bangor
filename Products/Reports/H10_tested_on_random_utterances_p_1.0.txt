@@ -1,0 +1,37 @@
+H10 tested on random_utterances with inclusion probability = 1.0
+
+**random_utterances**
+
+Hypothesis: H10
+c21!=c20 -> c1!=c0
+X: c21!=c20
+Y: c1!=c0
+fisher's p_value is : 1.6508056572257226e-207
+chi^2 p_value is : 1.7616651714567338e-208
+odd ratio : 1.5216571629625129
+statistics power (1-beta): 1.0
+relative risk: 1.2878388269780603
+relative risk 95%: (1.2675073499034497, 1.3084964315185723) 
+
+X | Y | Frequency
+True | True | 16426 
+True | False | 20221 
+False | True | 20168 
+False | False | 37779 
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+H10 & True & False \\
+\hline \hline
+True & 16426 & 20221 \\
+\hline 
+False & 20168 & 37779 \\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Hypothesis testing of H10}
+\label{table:h10}
+\end{table}

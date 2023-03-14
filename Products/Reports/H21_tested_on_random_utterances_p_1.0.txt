@@ -1,0 +1,37 @@
+H21 tested on random_utterances with inclusion probability = 1.0
+
+**random_utterances**
+
+Hypothesis: H21
+next cs level is in [1,..,6] if previous cs level was in [1,..,6]
+X: c1 in [1, 2, 3, 4, 5, 6]
+Y: c0 in [1, 2, 3, 4, 5, 6]
+fisher's p_value is : 4.141369721194291e-15
+chi^2 p_value is : 3.812218875420392e-17
+odd ratio : 1.6804480531275463
+statistics power (1-beta): 0.9999999999999747
+relative risk: 1.6325404220695168
+relative risk 95%: (1.4576939623329583, 1.8283592431331948) 
+
+X | Y | Frequency
+True | True | 300 
+True | False | 3961 
+False | True | 3957 
+False | False | 87796 
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+H21 & True & False \\
+\hline \hline
+True & 300 & 3961 \\
+\hline 
+False & 3957 & 87796 \\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Hypothesis testing of H21}
+\label{table:h21}
+\end{table}

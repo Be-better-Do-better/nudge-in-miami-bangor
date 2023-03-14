@@ -1,0 +1,37 @@
+H17 tested on random_utterances with inclusion probability = 1.0
+
+**random_utterances**
+
+Hypothesis: H17
+next cs level is 0 if previous cs level was 1, 2 or 3
+X: c1 in [1, 2, 3]
+Y: c0 = 0
+fisher's p_value is : 0.6174261084511068
+chi^2 p_value is : 0.6361070999573304
+odd ratio : 0.977795861427575
+statistics power (1-beta): 0.4587483119598141
+relative risk: 0.9919257677918455
+relative risk 95%: (0.9604317773214559, 1.024452493183309) 
+
+X | Y | Frequency
+True | True | 1372 
+True | False | 784 
+False | True | 60214 
+False | False | 33644 
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+H17 & True & False \\
+\hline \hline
+True & 1372 & 784 \\
+\hline 
+False & 60214 & 33644 \\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Hypothesis testing of H17}
+\label{table:h17}
+\end{table}

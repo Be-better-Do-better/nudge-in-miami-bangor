@@ -1,0 +1,37 @@
+H2 tested on random_turns with inclusion probability = 1.0
+
+**random_turns**
+
+Hypothesis: H2
+next cs level is 0 if backoff condition is met
+X: c1<c2-1 | c1+c3<c2
+Y: c0 = 0
+fisher's p_value is : 3.768627520981129e-14
+chi^2 p_value is : 3.362505166400352e-14
+odd ratio : 0.8745104530067975
+statistics power (1-beta): 0.9999999999928251
+relative risk: 0.9511225482751559
+relative risk 95%: (0.9386046600543616, 0.9638073838084631) 
+
+X | Y | Frequency
+True | True | 10646 
+True | False | 6792 
+False | True | 39335 
+False | False | 21946 
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+H2 & True & False \\
+\hline \hline
+True & 10646 & 6792 \\
+\hline 
+False & 39335 & 21946 \\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Hypothesis testing of H2}
+\label{table:h2}
+\end{table}

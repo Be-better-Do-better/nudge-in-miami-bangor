@@ -1,0 +1,37 @@
+H12 tested on random_turns with inclusion probability = 1.0
+
+**random_turns**
+
+Hypothesis: H12
+c101!=c100 -> c1!=c0
+X: c101!=c100
+Y: c1!=c0
+fisher's p_value is : 7.650333969753094e-27
+chi^2 p_value is : 8.102475554455418e-27
+odd ratio : 1.1752525600192074
+statistics power (1-beta): 1.0
+relative risk: 1.0915554566931496
+relative risk 95%: (1.0742631849553745, 1.1091260798312526) 
+
+X | Y | Frequency
+True | True | 15582 
+True | False | 17045 
+False | True | 17122 
+False | False | 22012 
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+H12 & True & False \\
+\hline \hline
+True & 15582 & 17045 \\
+\hline 
+False & 17122 & 22012 \\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Hypothesis testing of H12}
+\label{table:h12}
+\end{table}

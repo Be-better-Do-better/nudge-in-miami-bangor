@@ -1,0 +1,37 @@
+H15 tested on random_turns with inclusion probability = 1.0
+
+**random_turns**
+
+Hypothesis: H15
+next cs level is 0 if previous cs level was 0, 1, 2 or 3
+X: c1 in [0, 1, 2, 3]
+Y: c0 = 0
+fisher's p_value is : 2.0882003834092828e-257
+chi^2 p_value is : 2.8763748961428293e-260
+odd ratio : 1.7026090707898554
+statistics power (1-beta): 1.0
+relative risk: 1.2271020400515824
+relative risk 95%: (1.2119999219195137, 1.2423923380407205) 
+
+X | Y | Frequency
+True | True | 35513 
+True | False | 16961 
+False | True | 14553 
+False | False | 11834 
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+H15 & True & False \\
+\hline \hline
+True & 35513 & 16961 \\
+\hline 
+False & 14553 & 11834 \\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Hypothesis testing of H15}
+\label{table:h15}
+\end{table}
