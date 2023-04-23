@@ -8,16 +8,17 @@ X: not (c1<c2-1 | c1+c3<c2)
 Y: floor(avg(c1,c2,c3))<=c0<=min(floor(avg(c1,c2,c3))+2, 7)
 fisher's p_value is : 0.0
 chi^2 p_value is : 0.0
-odd ratio : 12.75626312525835
+odd ratio : 14.469664469821664
 statistics power (1-beta): 1.0
-relative risk: 7.308611688785534
-relative risk 95%: (6.908335046052794, 7.732080806933742) 
+relative risk: 7.436057141451756
+relative risk 95%: (6.967999600186417, 7.935555250240877) 
+accuracy: 0.5912841742609469
 
 X | Y | Frequency
-True | True | 35984 
-True | False | 41671 
-False | True | 1155 
-False | False | 17062 
+True | True | 31216 
+True | False | 28564 
+False | True | 857 
+False | False | 11347 
 
 
 \begin{table}
@@ -26,9 +27,9 @@ False | False | 17062
 \hline
 H4 & True & False \\
 \hline \hline
-True & 35984 & 41671 \\
+True & 31216 & 28564 \\
 \hline 
-False & 1155 & 17062 \\
+False & 857 & 11347 \\
 \hline 
 \end{tabular}
 \end{center}

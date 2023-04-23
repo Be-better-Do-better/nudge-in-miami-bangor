@@ -6,18 +6,19 @@ Hypothesis: H9
 c4!=c3 -> c1!=c0
 X: c4!=c3
 Y: c1!=c0
-fisher's p_value is : 1.6809856073e-313
-chi^2 p_value is : 0.0
-odd ratio : 1.6717741558674601
+fisher's p_value is : 7.294390663340631e-302
+chi^2 p_value is : 1.1108019635415735e-305
+odd ratio : 1.8285536581119761
 statistics power (1-beta): 1.0
-relative risk: 1.3616519937857086
-relative risk 95%: (1.3403593272230028, 1.3832829111742506) 
+relative risk: 1.4641618379774028
+relative risk 95%: (1.4356684343477324, 1.4932207440803322) 
+accuracy: 0.6089955773135657
 
 X | Y | Frequency
-True | True | 17098 
-True | False | 19939 
-False | True | 19923 
-False | False | 38841 
+True | True | 11030 
+True | False | 14050 
+False | True | 14064 
+False | False | 32758 
 
 
 \begin{table}
@@ -26,9 +27,9 @@ False | False | 38841
 \hline
 H9 & True & False \\
 \hline \hline
-True & 17098 & 19939 \\
+True & 11030 & 14050 \\
 \hline 
-False & 19923 & 38841 \\
+False & 14064 & 32758 \\
 \hline 
 \end{tabular}
 \end{center}

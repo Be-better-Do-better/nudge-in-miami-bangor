@@ -1,0 +1,17 @@
+general_nudge_testing
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c||c|c|c|c|}
+\hline
+Nudge on turns & True & False & Total & \% \\
+\hline \hline
+turns & 13211 & 5628 & 18839 & 70.13\\
+\hline 
+random_turns & 7019 & 11820 & 18839 & 37.26\\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Testing nudge on turns}
+\label{table:nudge-on-turns}
+\end{table}

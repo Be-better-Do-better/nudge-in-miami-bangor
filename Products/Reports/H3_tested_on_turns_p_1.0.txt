@@ -6,18 +6,19 @@ Hypothesis: H3
 Non-backoff condition is followed by a raise up to 3 levels up
 X: not (c1<c2-1 | c1+c3<c2)
 Y: floor(avg(c1,c2,c3))<=c0<=min(floor(avg(c1,c2,c3))+3, 7)
-fisher's p_value is : 8.868765472e-314
+fisher's p_value is : 4.6145425e-317
 chi^2 p_value is : 0.0
-odd ratio : 4.782813986041057
+odd ratio : 4.879834175564578
 statistics power (1-beta): 1.0
-relative risk: 2.012540187284757
-relative risk 95%: (1.9167851629356385, 2.113078754863132) 
+relative risk: 2.042858957238194
+relative risk 95%: (1.9436896177382876, 2.1470880335433473) 
+accuracy: 0.7175540102977865
 
 X | Y | Frequency
-True | True | 11647 
-True | False | 4257 
-False | True | 1068 
-False | False | 1867 
+True | True | 11665 
+True | False | 4288 
+False | True | 1033 
+False | False | 1853 
 
 
 \begin{table}
@@ -26,9 +27,9 @@ False | False | 1867
 \hline
 H3 & True & False \\
 \hline \hline
-True & 26609 & 34672 \\
+True & 16274 & 13998 \\
 \hline 
-False & 3148 & 14290 \\
+False & 1627 & 5779 \\
 \hline 
 \end{tabular}
 \end{center}

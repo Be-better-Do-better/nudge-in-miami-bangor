@@ -12,6 +12,7 @@ odd ratio : 20.676470755211923
 statistics power (1-beta): 1.0
 relative risk: 6.541913993616811
 relative risk 95%: (6.299570289915041, 6.7935806301570185) 
+accuracy: 0.8324000665299107
 
 X | Y | Frequency
 True | True | 8715 
@@ -26,9 +27,9 @@ False | False | 21313
 \hline
 H16 & True & False \\
 \hline \hline
-True & 15025 & 17248 \\
+True & 12483 & 11627 \\
 \hline 
-False & 15146 & 48595 \\
+False & 10072 & 37966 \\
 \hline 
 \end{tabular}
 \end{center}

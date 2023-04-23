@@ -23,6 +23,7 @@ class Hypothesis(object):
 		self.power = None
 		self.relative_risk = None
 		self.relative_risk_confidence_level = (None, None)
+		self.accuracy = None
 
 		self.contingency_table = {}
 		self.init_contingency_table()
@@ -84,6 +85,23 @@ class Hypothesis(object):
 
 		self.calc_statistics()
 
+	def calc_accuracy(self):
+		"""
+		This function calculates the value of the accuracy from the contingency table
+		:return: accuracy [float]
+		"""
+		accuracy = None
+		total_sum = 0
+		for x in [True, False]:
+			for y in [True, False]:
+				total_sum += self.contingency_table[(x, y)]
+
+		if total_sum > 0:
+			accuracy = (self.contingency_table[(True, True)] + self.contingency_table[(False, False)]) / total_sum
+
+		return accuracy
+
+
 	def calc_statistics(self):
 		data = [[0, 0], [0, 0]]
 		data[0][0] = self.contingency_table[(False, False)]
@@ -94,7 +112,7 @@ class Hypothesis(object):
 		# performing fishers exact test on the data
 		self.odd_ratio, self.fisher_p_value = stats.fisher_exact(data)
 		try:
-			chi_val, self.chi2_p_value, dof, expected =  stats.chi2_contingency(data)
+			chi_val, self.chi2_p_value, dof, expected = stats.chi2_contingency(data)
 		except ValueError:
 			print("a row/column of zeros was found in the contingency matrix :(")
 		except:
@@ -105,5 +123,7 @@ class Hypothesis(object):
 
 		self.relative_risk = sp.calc_relative_risk()
 		self.relative_risk_confidence_level = sp.calc_relative_risk_confidence_level()
+
+		self.accuracy = self.calc_accuracy()
 
 

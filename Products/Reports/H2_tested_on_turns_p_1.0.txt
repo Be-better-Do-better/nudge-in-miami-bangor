@@ -6,18 +6,19 @@ Hypothesis: H2
 next cs level is 0 if backoff condition is met
 X: c1<c2-1 | c1+c3<c2
 Y: c0 = 0
-fisher's p_value is : 2.6482432490410703e-97
-chi^2 p_value is : 5.730264838437627e-100
-odd ratio : 0.42760873071690164
+fisher's p_value is : 3.6851986698505864e-96
+chi^2 p_value is : 6.961302185652745e-99
+odd ratio : 0.42720598832751916
 statistics power (1-beta): 1.0
-relative risk: 0.6819181736965133
-relative risk 95%: (0.653852757851179, 0.7111882454175222) 
+relative risk: 0.681251842430352
+relative risk 95%: (0.6529594057370909, 0.7107701776511618) 
+accuracy: 0.3634481660385371
 
 X | Y | Frequency
-True | True | 1304 
-True | False | 1631 
-False | True | 10362 
-False | False | 5542 
+True | True | 1280 
+True | False | 1606 
+False | True | 10386 
+False | False | 5567 
 
 
 \begin{table}
@@ -26,9 +27,9 @@ False | False | 5542
 \hline
 H2 & True & False \\
 \hline \hline
-True & 10646 & 6792 \\
+True & 4243 & 3163 \\
 \hline 
-False & 39335 & 21946 \\
+False & 19540 & 10732 \\
 \hline 
 \end{tabular}
 \end{center}

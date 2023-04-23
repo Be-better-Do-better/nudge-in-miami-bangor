@@ -6,18 +6,19 @@ Hypothesis: H1
 next cs level is lower or 0 (retreat) if backoff condition is met
 X: c1<c2-1 | c1+c3<c2
 Y: c0 = max(0, c1-1)
-fisher's p_value is : 0.0
-chi^2 p_value is : 0.0
-odd ratio : 2.0102022011169622
+fisher's p_value is : 1.3219991760439389e-36
+chi^2 p_value is : 1.2515974656508639e-36
+odd ratio : 1.3885992126531117
 statistics power (1-beta): 1.0
-relative risk: 1.4300803498733987
-relative risk 95%: (1.4073483570272909, 1.4531795179794023) 
+relative risk: 1.1800275315437248
+relative risk 95%: (1.1514780917704395, 1.2092848184894345) 
+accuracy: 0.5435001857848081
 
 X | Y | Frequency
-True | True | 10014 
-True | False | 7424 
-False | True | 24608 
-False | False | 36673 
+True | True | 3975 
+True | False | 3431 
+False | True | 13769 
+False | False | 16503 
 
 
 \begin{table}
@@ -26,9 +27,9 @@ False | False | 36673
 \hline
 H1 & True & False \\
 \hline \hline
-True & 10014 & 7424 \\
+True & 3975 & 3431 \\
 \hline 
-False & 24608 & 36673 \\
+False & 13769 & 16503 \\
 \hline 
 \end{tabular}
 \end{center}

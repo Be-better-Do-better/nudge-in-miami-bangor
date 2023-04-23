@@ -6,18 +6,19 @@ Hypothesis: H17
 next cs level is 0 if previous cs level was 1, 2 or 3
 X: c1 in [1, 2, 3]
 Y: c0 = 0
-fisher's p_value is : 0.6174261084511068
-chi^2 p_value is : 0.6361070999573304
-odd ratio : 0.977795861427575
-statistics power (1-beta): 0.4587483119598141
-relative risk: 0.9919257677918455
-relative risk 95%: (0.9604317773214559, 1.024452493183309) 
+fisher's p_value is : 0.33021982028884644
+chi^2 p_value is : 0.34341612578917813
+odd ratio : 0.9503612331917958
+statistics power (1-beta): 0.5902883303143591
+relative risk: 0.9817363890923201
+relative risk 95%: (0.9454308056285331, 1.0194361469185236) 
+accuracy: 0.3623246659644065
 
 X | Y | Frequency
-True | True | 1372 
-True | False | 784 
-False | True | 60214 
-False | False | 33644 
+True | True | 1017 
+True | False | 592 
+False | True | 45415 
+False | False | 25124 
 
 
 \begin{table}
@@ -26,9 +27,9 @@ False | False | 33644
 \hline
 H17 & True & False \\
 \hline \hline
-True & 1372 & 784 \\
+True & 1017 & 592 \\
 \hline 
-False & 60214 & 33644 \\
+False & 45415 & 25124 \\
 \hline 
 \end{tabular}
 \end{center}

@@ -1,14 +1,8 @@
 import os
 from Auxiliaries.utils import PUNCTUATION_MARK_TAG, WELL_DEFINED_LANGUAGE_OPTIONS, CS_LEVELS_OPTIONS, CS_LEVELS_DECODE, PURE_CS_LEVELS_OPTIONS, MAJOR_LANGUAGE_ENCODE, load_most_common_words_list
-
-MOST_COMMON_WORDS_IN_ENGLISH_FILE = 'most_common_1000_eng_words.txt'
-MOST_COMMON_WORDS_IN_SPANISH_FILE = 'most_common_1000_spa_words.txt'
-
-MOST_COMMON_BIGRAMS_IN_ENGLISH_FILE = 'most_common_1000_eng_bigrams.txt'
-MOST_COMMON_BIGRAMS_IN_SPANISH_FILE = 'most_common_1000_spa_bigrams.txt'
-
-MOST_COMMON_TRIGRAMS_IN_ENGLISH_FILE = 'most_common_1000_eng_trigrams.txt'
-MOST_COMMON_TRIGRAMS_IN_SPANISH_FILE = 'most_common_1000_spa_trigrams.txt'
+from Auxiliaries.utils import MOST_COMMON_WORDS_IN_ENGLISH_FILE, MOST_COMMON_WORDS_IN_SPANISH_FILE
+from Auxiliaries.utils import MOST_COMMON_BIGRAMS_IN_ENGLISH_FILE, MOST_COMMON_BIGRAMS_IN_SPANISH_FILE
+from Auxiliaries.utils import MOST_COMMON_TRIGRAMS_IN_ENGLISH_FILE, MOST_COMMON_TRIGRAMS_IN_SPANISH_FILE
 
 DIR_OF_MOST_COMMON_N_GRAMS = os.path.join('Data', 'common_n_grams')
 
@@ -20,6 +14,7 @@ LIST_OF_MOST_COMMON_BIGRAMS_IN_ENGLISH = load_most_common_words_list(MOST_COMMON
 
 LIST_OF_MOST_COMMON_TRIGRAMS_IN_SPANISH = load_most_common_words_list(MOST_COMMON_TRIGRAMS_IN_SPANISH_FILE)
 LIST_OF_MOST_COMMON_TRIGRAMS_IN_ENGLISH = load_most_common_words_list(MOST_COMMON_TRIGRAMS_IN_ENGLISH_FILE)
+
 
 def find_first_well_defined_label_in(label_seq):
 	for label in label_seq:

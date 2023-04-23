@@ -16,16 +16,17 @@ PURE_CS_LEVELS_OPTIONS = ['ET', 'EL', 'EP', 'SP', 'SL', 'ST']
 CS_LEVELS_DECODE = {'EN': 0, 'ET': 1, 'EL': 2, 'EP': 3, 'SP': 4, 'SL': 5, 'ST': 6, 'SN': 7}
 MAJOR_LANGUAGE_ENCODE = {'eng': 'E', 'spa': 'S'}
 
-MOST_COMMON_WORDS_IN_ENGLISH_FILE = 'most_common_1000_eng_words.txt'
-MOST_COMMON_WORDS_IN_SPANISH_FILE = 'most_common_1000_spa_words.txt'
+MOST_COMMON_WORDS_IN_ENGLISH_FILE = 'most_common_1000_unigrams_in_eng.txt'
+MOST_COMMON_WORDS_IN_SPANISH_FILE = 'most_common_1000_unigrams_in_spa.txt'
 
-MOST_COMMON_BIGRAMS_IN_ENGLISH_FILE = 'most_common_1000_eng_bigrams.txt'
-MOST_COMMON_BIGRAMS_IN_SPANISH_FILE = 'most_common_1000_spa_bigrams.txt'
+MOST_COMMON_BIGRAMS_IN_ENGLISH_FILE = 'most_common_1000_bigrams_in_eng.txt'
+MOST_COMMON_BIGRAMS_IN_SPANISH_FILE = 'most_common_1000_bigrams_in_spa.txt'
 
-MOST_COMMON_TRIGRAMS_IN_ENGLISH_FILE = 'most_common_1000_eng_trigrams.txt'
-MOST_COMMON_TRIGRAMS_IN_SPANISH_FILE = 'most_common_1000_spa_trigrams.txt'
+MOST_COMMON_TRIGRAMS_IN_ENGLISH_FILE = 'most_common_1000_trigrams_in_eng.txt'
+MOST_COMMON_TRIGRAMS_IN_SPANISH_FILE = 'most_common_1000_trigrams_in_spa.txt'
 
 DIR_OF_MOST_COMMON_N_GRAMS = os.path.join('Data', 'common_n_grams')
+
 
 def load_most_common_words_list(file_of_most_common_words, dir_of_most_common_words=DIR_OF_MOST_COMMON_N_GRAMS):
 	list_of_common_words = []
@@ -40,6 +41,7 @@ def load_most_common_words_list(file_of_most_common_words, dir_of_most_common_wo
 		list_of_common_words.extend(split_word)
 
 	return list_of_common_words
+
 
 def load_words(filename):
 	f = codecs.open(os.path.join('Data', 'common_n_grams', filename))

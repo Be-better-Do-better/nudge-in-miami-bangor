@@ -6,18 +6,19 @@ Hypothesis: H11
 c51!=c50 -> c1!=c0
 X: c51!=c50
 Y: c1!=c0
-fisher's p_value is : 1.3311092793709943e-86
-chi^2 p_value is : 2.71439744942495e-88
-odd ratio : 1.9811789644151425
+fisher's p_value is : 5.767109115879955e-87
+chi^2 p_value is : 1.202572501285532e-88
+odd ratio : 1.9833888122708743
 statistics power (1-beta): 1.0
-relative risk: 1.562636620095803
-relative risk 95%: (1.4969268143898822, 1.6312308544353775) 
+relative risk: 1.563462060113976
+relative risk 95%: (1.4977693497995026, 1.6320360766783326) 
+accuracy: 0.630312370339636
 
 X | Y | Frequency
-True | True | 2315 
-True | False | 3112 
+True | True | 2320 
+True | False | 3113 
 False | True | 3124 
-False | False | 8320 
+False | False | 8314 
 
 
 \begin{table}
@@ -26,9 +27,9 @@ False | False | 8320
 \hline
 H11 & True & False \\
 \hline \hline
-True & 16323 & 17706 \\
+True & 6239 & 7423 \\
 \hline 
-False & 17714 & 23568 \\
+False & 7436 & 12644 \\
 \hline 
 \end{tabular}
 \end{center}

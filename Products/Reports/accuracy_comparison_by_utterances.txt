@@ -1,0 +1,58 @@
+Comparison of Accuracy in Corpora Comparison
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\hline
+\multirow{2}{*}{Hypotheses} & \multicolumn{2}{c|}{Accuracy} \\
+\cline{2-3}
+& Corpus & Random \\
+\hline \hline
+H1  & 0.44 & 0.53 \\
+\hline
+H2  & 0.37 & 0.40 \\
+\hline
+H3  & 0.77 & 0.62 \\
+\hline
+H4  & 0.75 & 0.59 \\
+\hline
+H5  & 0.74 & 0.59 \\
+\hline
+H6  & 0.73 & 0.58 \\
+\hline
+H7  & 0.80 & 0.69 \\
+\hline
+H8  & 0.73 & 0.61 \\
+\hline
+H9  & 0.72 & 0.61 \\
+\hline
+H10  & 0.70 & 0.60 \\
+\hline
+H11  & 0.69 & 0.60 \\
+\hline
+H12  & 0.69 & 0.60 \\
+\hline
+H13  & 0.83 & 0.70 \\
+\hline
+H14  & 0.83 & 0.70 \\
+\hline
+H15  & 0.83 & 0.69 \\
+\hline
+H16  & 0.83 & 0.70 \\
+\hline
+H17  & 0.37 & 0.36 \\
+\hline
+H18  & 0.69 & 0.68 \\
+\hline
+H19  & 0.67 & 0.68 \\
+\hline
+H20  & 0.35 & 0.36 \\
+\hline
+H21  & 0.92 & 0.92 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Accuracy Testing by Utterances}
+\label{table:accuracy-table-by-utterances}
+\end{table}

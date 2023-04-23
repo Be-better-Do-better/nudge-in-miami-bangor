@@ -3,6 +3,7 @@ from Auxiliaries.utils import PURE_CS_LEVELS_OPTIONS
 from LanguageAnalysis.language_analysis import apply_well_defined_lang_label_to_all_ambiguous_tokens, calc_cs_level
 from Classes.language_usage_data import LanguageUsageData
 
+
 class Utterance(object):
 	def __init__(self, tokens, speaker):
 		self.tokens = tokens

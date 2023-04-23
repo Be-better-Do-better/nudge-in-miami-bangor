@@ -6,18 +6,19 @@ Hypothesis: H18
 next cs level is 7 if previous cs level was 4, 5 or 6
 X: c1 in [4, 5, 6]
 Y: c0 = 7
-fisher's p_value is : 3.895641529388335e-09
-chi^2 p_value is : 2.629174058641238e-09
-odd ratio : 1.3059192667865167
-statistics power (1-beta): 0.9999998512251093
-relative risk: 1.1945382196081675
-relative risk 95%: (1.129502619205632, 1.263318503066589) 
+fisher's p_value is : 3.855555424095664e-19
+chi^2 p_value is : 4.2001863658603945e-20
+odd ratio : 1.6919623917523339
+statistics power (1-beta): 0.9999999999999999
+relative risk: 1.4072570611937556
+relative risk 95%: (1.3159092557237546, 1.504946049787053) 
+accuracy: 0.6975054172612442
 
 X | Y | Frequency
-True | True | 809 
-True | False | 1413 
-False | True | 23359 
-False | False | 53280 
+True | True | 532 
+True | False | 761 
+False | True | 10686 
+False | False | 25863 
 
 
 \begin{table}
@@ -26,9 +27,9 @@ False | False | 53280
 \hline
 H18 & True & False \\
 \hline \hline
-True & 809 & 1413 \\
+True & 532 & 761 \\
 \hline 
-False & 23359 & 53280 \\
+False & 10686 & 25863 \\
 \hline 
 \end{tabular}
 \end{center}

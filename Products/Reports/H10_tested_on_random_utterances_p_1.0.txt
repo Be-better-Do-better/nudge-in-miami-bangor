@@ -6,18 +6,19 @@ Hypothesis: H10
 c21!=c20 -> c1!=c0
 X: c21!=c20
 Y: c1!=c0
-fisher's p_value is : 1.6508056572257226e-207
-chi^2 p_value is : 1.7616651714567338e-208
-odd ratio : 1.5216571629625129
+fisher's p_value is : 4.0887255637434294e-207
+chi^2 p_value is : 2.1355725125900386e-209
+odd ratio : 1.6558766060786851
 statistics power (1-beta): 1.0
-relative risk: 1.2878388269780603
-relative risk 95%: (1.2675073499034497, 1.3084964315185723) 
+relative risk: 1.377423076860308
+relative risk 95%: (1.3501647424793517, 1.4052317268952337) 
+accuracy: 0.5985703749929087
 
 X | Y | Frequency
-True | True | 16426 
-True | False | 20221 
-False | True | 20168 
-False | False | 37779 
+True | True | 10441 
+True | False | 14152 
+False | True | 14152 
+False | False | 31763 
 
 
 \begin{table}
@@ -26,9 +27,9 @@ False | False | 37779
 \hline
 H10 & True & False \\
 \hline \hline
-True & 16426 & 20221 \\
+True & 10441 & 14152 \\
 \hline 
-False & 20168 & 37779 \\
+False & 14152 & 31763 \\
 \hline 
 \end{tabular}
 \end{center}

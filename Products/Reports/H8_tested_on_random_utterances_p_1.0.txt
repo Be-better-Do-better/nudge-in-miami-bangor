@@ -8,16 +8,17 @@ X: c3!=c2
 Y: c1!=c0
 fisher's p_value is : 0.0
 chi^2 p_value is : 0.0
-odd ratio : 1.7091612947653714
+odd ratio : 1.9032342912840685
 statistics power (1-beta): 1.0
-relative risk: 1.3795271255294044
-relative risk 95%: (1.3579770382433498, 1.4014191966995437) 
+relative risk: 1.5006739097302508
+relative risk 95%: (1.4715432412973901, 1.530381248844292) 
+accuracy: 0.6132334963325183
 
 X | Y | Frequency
-True | True | 17224 
-True | False | 19831 
-False | True | 19818 
-False | False | 38999 
+True | True | 11193 
+True | False | 13921 
+False | True | 13920 
+False | False | 32950 
 
 
 \begin{table}
@@ -26,9 +27,9 @@ False | False | 38999
 \hline
 H8 & True & False \\
 \hline \hline
-True & 17224 & 19831 \\
+True & 11193 & 13921 \\
 \hline 
-False & 19818 & 38999 \\
+False & 13920 & 32950 \\
 \hline 
 \end{tabular}
 \end{center}

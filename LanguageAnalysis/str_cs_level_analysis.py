@@ -21,6 +21,7 @@ COMMON_WORDS = {'en': load_words('most_common_en_words_without_shared.txt'),
 
 UNCOMMON_WORDS = json.loads(open(os.path.join('Data', 'common_n_grams', 'translation_pairs.json'), 'r').read())
 
+
 def test_classify():
 		str = '¿Cómo se llega a la capital?'
 		c = langid.classify(str)
@@ -29,6 +30,7 @@ def test_classify():
 def get_other_lang(lang):
 	major_lang_index = LANGUAGES.index(lang)
 	return LANGUAGES[major_lang_index-1]
+
 
 def test_get_other_lang():
 	lang = 'en'
@@ -49,12 +51,14 @@ def check_phrasal_cs_presence(sentence, minor_lang):
 				return True
 	return False
 
+
 def check_lexical_cs_presence(sentence, minor_lang):
 	tokens = sentence.split()
 	for token in tokens:
 		if token in UNCOMMON_WORDS[minor_lang]:
 			return True
 	return False
+
 
 def check_frozen_expression_cs_presence(sentence, minor_lang):
 	tokens = sentence.split()
@@ -69,6 +73,7 @@ def test_check_phrasal_cs_presence():
 	minor_lang='eng'
 	res = check_phrasal_cs_presence(sentence, minor_lang)
 
+
 def calc_cs_level_for_str(sentence):
 	major_lang = langid.classify(sentence)[0]
 	major_lang_code = MAJOR_LANGUAGE_CODES[major_lang]
@@ -82,6 +87,7 @@ def calc_cs_level_for_str(sentence):
 	else:
 		minor_lang_code = 'N'
 	return major_lang_code+minor_lang_code
+
 
 def test_calc_cs_level_for_str():
 	sentence = '¿Cómo se llega a la capital?'

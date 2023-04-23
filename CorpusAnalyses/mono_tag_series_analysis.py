@@ -75,8 +75,6 @@ def get_sorted_list_of_tags(frequency_of_lengths_of_subsequences: dict) -> list[
 def get_random_expected_values(frequency_of_lengths_of_subsequences: dict) -> dict:
 	"""This function returns the expected # of relative sub-sequences of a specific language tag,
 	if the distribution was completely random"""
-	print("input = ")
-	print(frequency_of_lengths_of_subsequences)
 	# Get total sum of utterances/turns:
 	total_sum = 0
 	sum_of_tag = {}
@@ -86,8 +84,6 @@ def get_random_expected_values(frequency_of_lengths_of_subsequences: dict) -> di
 			sum([i*frequency_of_lengths_of_subsequences_of_current_tag[i] for i in range(len(frequency_of_lengths_of_subsequences_of_current_tag))])
 		sum_of_tag[current_tag] = sum_of_current_tag
 
-		print("len(f[" + current_tag + "])")
-		print(len(frequency_of_lengths_of_subsequences_of_current_tag))
 		total_sum += sum_of_current_tag
 
 	# Calc probability of each language tag:

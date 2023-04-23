@@ -1,12 +1,14 @@
 import os
-os.chdir('..')
-from LanguageAnalysis.language_analysis import MOST_COMMON_WORDS_IN_ENGLISH_FILE, load_most_common_words_list, find_first_well_defined_label_in, WELL_DEFINED_LANGUAGE_OPTIONS, get_end_indices_of_longest_sequence, apply_well_defined_lang_label_to_all_ambiguous_tokens, calc_cs_level
+os.chdir('../..')
+
+from LanguageAnalysis.language_analysis import load_most_common_words_list, find_first_well_defined_label_in, get_end_indices_of_longest_sequence, apply_well_defined_lang_label_to_all_ambiguous_tokens, calc_cs_level
 from Auxiliaries.artificial_generation import generate_utterance
+from Auxiliaries.utils import MOST_COMMON_WORDS_IN_ENGLISH_FILE, WELL_DEFINED_LANGUAGE_OPTIONS
 
 
 def test_load_most_common_words_list():
 	file_of_most_common_words = MOST_COMMON_WORDS_IN_ENGLISH_FILE
-	dir_of_most_common_words = os.path.join('../Data', 'common_n_grams')
+	dir_of_most_common_words = os.path.join('Data', 'common_n_grams')
 	list_of_common_words = load_most_common_words_list(file_of_most_common_words, dir_of_most_common_words)
 	print(list_of_common_words)
 	print(len(list_of_common_words))
@@ -16,6 +18,7 @@ def test_find_first_well_defined_label_in():
 	label_seq = ['eng&spa', 'eng', 'spa']
 	res = find_first_well_defined_label_in(label_seq)
 	print(res)
+
 
 def test_get_end_indices_of_longest_sequence():
 	utterance = generate_utterance()
@@ -28,11 +31,13 @@ def test_get_end_indices_of_longest_sequence():
 	print(minor_lang)
 	get_end_indices_of_longest_sequence(utterance.tokens, minor_lang)
 
+
 def are_all_tokens_ambiguous(tokens) -> bool:
 	for token in tokens:
 		if token.lang in WELL_DEFINED_LANGUAGE_OPTIONS:
-					return False
+			return False
 	return True
+
 
 def test_are_all_tokens_ambiguous():
 	utterance = generate_utterance()
@@ -62,6 +67,7 @@ def run_tests():
 	test_are_all_tokens_ambiguous()
 	test_apply_well_defined_lang_label_to_all_ambiguous_tokens()
 	test_calc_cs_level()
+
 
 if __name__ == '__main__':
 	run_tests()

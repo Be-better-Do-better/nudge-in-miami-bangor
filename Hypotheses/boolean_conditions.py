@@ -122,6 +122,7 @@ def retreat(history, constants=None):
 	c1 = history[-2]
 	return c0 == max(0, c1-1)
 
+
 def nudge(history, constants=None) -> bool:
 	if constants is None:
 		constants = {'max_allowed_raise': 3}
@@ -147,3 +148,24 @@ def previous_belongs_to(history, constants=None) -> bool:
 	# c0 = history[-1]
 	c1 = history[-2]
 	return c1 in constants['previous_set']
+
+
+def general_nudge(history, constants=None) -> bool:
+	def __avg(c1, c2, c3):
+		return (c1+c2+c3)/3
+
+	def __get_lower_limit(c1: int, c2:int, c3:int):
+		if (c1 < c2-1) and (c1+c3 < c2):
+			return max(0, c1-1)
+		else:
+			return min(math.floor(__avg(c1, c2, c3)), 7)
+	def __get_upper_limit(c1: int, c2:int, c3:int):
+		if (c1 < c2-1) and (c1+c3 < c2):
+			return max(0, c1-1)
+		else:
+			return min(math.floor(__avg(c1, c2, c3)+3), 7)
+
+	c0, c1, c2, c3 = history[-1], history[-2], history[-3], history[-4]
+	lower_limit = __get_lower_limit(c1, c2, c3)
+	upper_limit = __get_upper_limit(c1, c2, c3)
+	return (lower_limit <= c0) and (c0 <= upper_limit)

@@ -1,8 +1,0 @@
-Pure CS Levels Distribution in Utterances
-
-ET: 393 (24.38%)
-EL: 137 (8.50%)
-EP: 293 (18.18%)
-SP: 247 (15.32%)
-SL: 245 (15.20%)
-ST: 297 (18.42%)

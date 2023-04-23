@@ -4,15 +4,16 @@ from collections import Counter
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
 import langid
-langid.set_languages(['en', 'es'])
 
 from LanguageAnalysis.str_cs_level_analysis import calc_cs_level_for_str
 from CorpusAnalyses.distances_between_events_in_boolean_sequences_analysis import extract_distances, calc_frequency, calc_relative_frequency, plot_relative_frequency
 from CorpusAnalyses.categorial_subsequences_length_analysis import collect_subsequence_frequencies, unite_subsequence_frequencies, plot_relative_frequency_comparison, calc_relative_frequency_of_tags
 from Auxiliaries.report import Report
 from Auxiliaries.utils import LANGID_CODES, WELL_DEFINED_LANGUAGE_OPTIONS, CS_LEVELS_OPTIONS, PURE_CS_LEVELS_OPTIONS, CS_LEVELS_DECODE
-
 from Classes.corpus import Corpus
+
+langid.set_languages(['en', 'es'])
+
 
 def collect_languages(corpus):
 	all_found_languages = []
@@ -24,6 +25,7 @@ def collect_languages(corpus):
 					all_found_languages.append(lang)
 
 	return all_found_languages
+
 
 def analyse_corpus_for_intra_sentential_cs(corpus):
 	distances_between_intra_sentential_cs = []
@@ -38,6 +40,7 @@ def analyse_corpus_for_intra_sentential_cs(corpus):
 	relative_frequency_of_intra_sentential_cs = calc_relative_frequency(frequency_of_intra_sentential_cs)
 	plot_title = "Relative Frequency for " + corpus.name + " IntRA-Sentential CS distances"
 	plot_relative_frequency(relative_frequency_of_intra_sentential_cs, title=plot_title)
+
 
 def analyse_corpus_for_inter_sentential_cs(corpus):
 	language_tag_types_in_corpus = []
@@ -57,6 +60,7 @@ def analyse_corpus_for_inter_sentential_cs(corpus):
 	plot_relative_frequency_comparison(language_tags_subsequence_length_frequency_in_corpus,
 									   title='Relative Comparison in Corpus',
 									   required_tags=['eng', 'spa'])
+
 
 def analyse_langid_results(corpus):
 	lang_analysis_results = {}
@@ -78,9 +82,11 @@ def analyse_langid_results(corpus):
 
 	print(lang_analysis_results)
 
+
 def langid_classify(text):
 	classifier_result = langid.classify(text)
 	return LANGID_CODES[classifier_result[0]]
+
 
 def analyse_cs_level_classifier(corpus: Corpus) -> None:
 	y_true = []
@@ -104,6 +110,7 @@ def analyse_cs_level_classifier(corpus: Corpus) -> None:
 	disp.plot()
 	plt.savefig(os.path.join('Products', 'Figures', 'cs_labels_confusion_matrix.png'))
 	# plt.show()
+
 
 def analyse_raw_cs_levels_distribution(corpus: Corpus) -> None:
 	c = Counter()
@@ -142,6 +149,7 @@ def analyse_raw_cs_levels_distribution(corpus: Corpus) -> None:
 	Report(report_title='CS Levels Distribution in Turns',
 	       report_filename='cs_levels_distribution_in_turns.txt',
 	       report_content=text_to_write)
+
 
 def analyses_cs_bigrams_distribution(corpus: Corpus) -> None:
 	c = Counter()
@@ -182,6 +190,7 @@ def analyses_cs_bigrams_distribution(corpus: Corpus) -> None:
 	       report_filename='cs_levels_bigrams_distribution_in_utterances.txt',
 	       report_content=text_to_write)
 
+
 def get_cs_levels_distribution(corpus: Corpus, utterances=True) -> list[float]:
 	cs_levels_distribution: list[int] = [0 for _ in CS_LEVELS_OPTIONS]
 
@@ -198,3 +207,10 @@ def get_cs_levels_distribution(corpus: Corpus, utterances=True) -> list[float]:
 		for cs_level in range(len(CS_LEVELS_OPTIONS)):
 			cs_levels_distribution[cs_level] = cs_levels_distribution[cs_level] / total_sum
 	return cs_levels_distribution
+
+
+def get_dialogues_length(corpus: Corpus, utterances=True) -> list[int]:
+	if utterances:
+		return [len(dialogue.utterances) for dialogue in corpus.dialogues]
+	else: # in turns:
+		return [len(dialogue.turns) for dialogue in corpus.dialogues]

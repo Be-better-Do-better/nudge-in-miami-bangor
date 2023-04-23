@@ -7,6 +7,7 @@ from Classes.turn import Turn
 from Classes.dialogue import Dialogue
 from Classes.corpus import Corpus
 
+
 def collect_all_utterances(dirname, filename):
     list_of_collected_utterances = []
 
@@ -74,12 +75,14 @@ def aggregate_utterances_to_turns(all_utterances_from_a_dialogue):
     return list_of_turns
 
 
+
 def collect_list_of_speakers(turns):
     list_of_speakers = []
     for t in turns:
         if t.speaker not in list_of_speakers:
             list_of_speakers.append(t.speaker)
     return list_of_speakers
+
 
 def collect_dialogue(root_dir, filename):
     utterances = collect_all_utterances(root_dir, filename)

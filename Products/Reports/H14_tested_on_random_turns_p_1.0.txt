@@ -6,18 +6,19 @@ Hypothesis: H14
 Spanish Major Language is followed by Spanish Major Language
 X: c1 in [4, 5, 6, 7]
 Y: c0 in [4, 5, 6, 7]
-fisher's p_value is : 6.500546849997882e-275
-chi^2 p_value is : 3.93418543437598e-279
-odd ratio : 1.7496542897350416
+fisher's p_value is : 0.0
+chi^2 p_value is : 0.0
+odd ratio : 3.168169440916492
 statistics power (1-beta): 1.0
-relative risk: 1.4354114391359096
-relative risk 95%: (1.407729779784208, 1.4636374318358627) 
+relative risk: 2.0720345184475546
+relative risk 95%: (2.0153193109435907, 2.130345807894837) 
+accuracy: 0.6732466571534275
 
 X | Y | Frequency
-True | True | 11061 
-True | False | 15326 
-False | True | 15324 
-False | False | 37150 
+True | True | 6322 
+True | False | 6183 
+False | True | 6182 
+False | False | 19155 
 
 
 \begin{table}
@@ -26,9 +27,9 @@ False | False | 37150
 \hline
 H14 & True & False \\
 \hline \hline
-True & 11061 & 15326 \\
+True & 6322 & 6183 \\
 \hline 
-False & 15324 & 37150 \\
+False & 6182 & 19155 \\
 \hline 
 \end{tabular}
 \end{center}

@@ -18,6 +18,7 @@ class HypothesisTest(object):
 		self.contingency_table = self.hypothesis.contingency_table.copy()
 		self.relative_risk = float(self.hypothesis.relative_risk)
 		self.relative_risk_confidence_level = self.hypothesis.relative_risk_confidence_level
+		self.accuracy = float(self.hypothesis.accuracy)
 
 
 	def __str__(self):
@@ -42,6 +43,8 @@ class HypothesisTest(object):
 		if not None in self.relative_risk_confidence_level:
 			s += 'relative risk 95%: ({}, {}) \n'.format(self.relative_risk_confidence_level[0],
 			                                             self.relative_risk_confidence_level[1])
+		if self.accuracy is not None:
+			s += 'accuracy: ' + str(self.accuracy) + '\n'
 		s += '\n'
 		s += "X | Y | Frequency" + '\n'
 		for x in [True, False]:

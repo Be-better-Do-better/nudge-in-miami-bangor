@@ -6,18 +6,19 @@ Hypothesis: H12
 c101!=c100 -> c1!=c0
 X: c101!=c100
 Y: c1!=c0
-fisher's p_value is : 4.81722000570262e-56
-chi^2 p_value is : 1.027830723443377e-58
-odd ratio : 1.6474988335562537
+fisher's p_value is : 3.4341074090454184e-57
+chi^2 p_value is : 6.930652167656229e-60
+odd ratio : 1.6554539270728503
 statistics power (1-beta): 1.0
-relative risk: 1.4631948554771812
-relative risk 95%: (1.3987153874325098, 1.5306467665482753) 
+relative risk: 1.4683574863733808
+relative risk 95%: (1.4037223483819292, 1.5359687834806215) 
+accuracy: 0.6931569400137612
 
 X | Y | Frequency
-True | True | 1968 
-True | False | 4946 
-False | True | 4875 
-False | False | 20185 
+True | True | 1973 
+True | False | 4939 
+False | True | 4872 
+False | False | 20190 
 
 
 \begin{table}
@@ -26,9 +27,9 @@ False | False | 20185
 \hline
 H12 & True & False \\
 \hline \hline
-True & 15611 & 19151 \\
+True & 9348 & 12924 \\
 \hline 
-False & 19055 & 35097 \\
+False & 12945 & 28731 \\
 \hline 
 \end{tabular}
 \end{center}

@@ -6,18 +6,19 @@ Hypothesis: H13
 English Major Language is followed by English Major Language
 X: c1 in [0, 1, 2, 3]
 Y: c0 in [0, 1, 2, 3]
-fisher's p_value is : 6.500546849997882e-275
-chi^2 p_value is : 3.93418543437598e-279
-odd ratio : 1.7496542897350416
+fisher's p_value is : 0.0
+chi^2 p_value is : 0.0
+odd ratio : 3.168169440916492
 statistics power (1-beta): 1.0
-relative risk: 1.2189217962400385
-relative risk 95%: (1.20482715239186, 1.2331813259681648) 
+relative risk: 1.529013832882573
+relative risk 95%: (1.500156212312691, 1.5584265704850149) 
+accuracy: 0.6732466571534275
 
 X | Y | Frequency
-True | True | 37150 
-True | False | 15324 
-False | True | 15326 
-False | False | 11061 
+True | True | 19155 
+True | False | 6182 
+False | True | 6183 
+False | False | 6322 
 
 
 \begin{table}
@@ -26,9 +27,9 @@ False | False | 11061
 \hline
 H13 & True & False \\
 \hline \hline
-True & 37150 & 15324 \\
+True & 19155 & 6182 \\
 \hline 
-False & 15326 & 11061 \\
+False & 6183 & 6322 \\
 \hline 
 \end{tabular}
 \end{center}
