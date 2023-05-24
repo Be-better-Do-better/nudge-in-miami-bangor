@@ -106,5 +106,6 @@ def run_tests():
 	test_plot_relative_frequency()
 	test_full_cycle()
 
+
 if __name__ == '__main__':
 	run_tests()

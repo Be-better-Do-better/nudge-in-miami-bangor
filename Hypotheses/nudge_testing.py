@@ -1,6 +1,5 @@
-from Auxiliaries.report import Report
 from Hypotheses.boolean_conditions import general_nudge, same_cs_level
-from Hypotheses.corpus_cs_levels_series_representation import CorpusCSSeries
+from Classes.corpus_cs_levels_series_representation import CorpusCSSeries
 
 
 def test_nudge(corpus_as_cs_levels_series: CorpusCSSeries) -> tuple[int, int]:

@@ -1,5 +1,5 @@
 from Classes.corpus import Corpus
-from Hypotheses.corpus_cs_levels_series_representation import CorpusCSSeries
+from Classes.corpus_cs_levels_series_representation import CorpusCSSeries
 from Auxiliaries.utils import CS_LEVELS_DECODE
 from Hypotheses.random_cs_sequences_generation import generate_random_list_of_series
 from CorpusAnalyses.corpus_analyses import get_cs_levels_distribution, get_dialogues_length

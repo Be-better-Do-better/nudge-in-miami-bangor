@@ -1,5 +1,5 @@
 from Hypotheses.hypothesis import Hypothesis
-from Hypotheses.corpus_cs_levels_series_representation import CorpusCSSeries
+from Classes.corpus_cs_levels_series_representation import CorpusCSSeries
 
 class HypothesisTest(object):
 	def __init__(self, hypothesis: Hypothesis, corpus_as_cs_levels_series: CorpusCSSeries, probability_of_sample_inclusion: float):

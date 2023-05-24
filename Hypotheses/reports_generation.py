@@ -1,4 +1,4 @@
-from Hypotheses.corpus_cs_levels_series_representation import CorpusCSSeries
+from Classes.corpus_cs_levels_series_representation import CorpusCSSeries
 from Hypotheses.hypothesis import Hypothesis
 from Auxiliaries.report import Report
 from Hypotheses.hypothesis_test import HypothesisTest

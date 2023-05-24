@@ -1,7 +1,7 @@
 from Classes.corpus import Corpus
 from Hypotheses.hypothesis_test import HypothesisTest
 from Hypotheses.hypothesis import Hypothesis
-from Hypotheses.corpus_cs_levels_series_representation import CorpusCSSeries
+from Classes.corpus_cs_levels_series_representation import CorpusCSSeries
 from Hypotheses.corpora_representations import generate_utterances_corpora_representations, \
 	generate_turns_corpora_representations
 from Hypotheses.hypotheses import generate_hypotheses

@@ -16,9 +16,9 @@ def main():
 	analyse_corpus(miami_bangor_corpus)
 
 	# compare_predictors_on_corpus(miami_bangor_corpus)
-	run_test_hypothesis(miami_bangor_corpus)
-	nudge_occurrence_testing(miami_bangor_corpus)
-	tit_for_tat_occurrence_testing(miami_bangor_corpus)
+	# run_test_hypothesis(miami_bangor_corpus)
+	# nudge_occurrence_testing(miami_bangor_corpus)
+	# tit_for_tat_occurrence_testing(miami_bangor_corpus)
 	# analyse_cs_level_classifier(miami_bangor_corpus)
 
 	# collect samples of Utterances for each CS level:
