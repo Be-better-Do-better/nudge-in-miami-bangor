@@ -7,14 +7,13 @@ from Auxiliaries.utils import CS_LEVELS_DECODE
 from Auxiliaries.artificial_generation import generate_corpus
 from Classes.corpus import Corpus
 from Classes.corpus_cs_levels_series_representation import CorpusCSSeries
-from Hypotheses.nudge import nudge
-from Hypotheses.always_0_or_7 import Always_0_or_7
 from Hypotheses.always_decreases import AlwaysDecrease
 from CorpusAnalyses.extract_cs_levels_frequency import extract_cs_levels_frequency
 from Auxiliaries.t_test import t_test
 from Auxiliaries.get_all_permutations import get_all_permutations
 from Classes.hypothesis import Hypothesis
 from Hypotheses.always_0_or_7 import Always_0_or_7
+from Hypotheses.nudge import Nudge
 
 
 def collect_cs_levels(corpus: Corpus, utterances=True) -> CorpusCSSeries:
@@ -95,17 +94,6 @@ def analyse_hypothesis_proportion(corpus: Corpus, hypothesis) -> None:
 	# Output the p-value of the test statistic (right tailed test)
 	print("p_value = {}".format(p_value))
 
-	"""
-	results = []
-	# test on random
-	for _ in range(1000):
-		random_corpus_as_cs_levels_series = generate_equivalent_random_corpus(corpus_as_cs_levels_series, dict_of_frequencies)
-		proportions_sample = calc_actual_proportions(random_corpus_as_cs_levels_series, hypothesis)
-		# print("p_measured@random = {}".format(p_measured))
-	print("At the randomly generated series:")
-	print("mean = {}, std = {}".format(np.mean(results), np.std(results)))
-	"""
-
 
 def analyse_always_0_or_7_proportion(corpus: Corpus):
 	hypothesis = Always_0_or_7()
@@ -114,4 +102,9 @@ def analyse_always_0_or_7_proportion(corpus: Corpus):
 
 def analyse_always_decreases_proportion(corpus: Corpus):
 	hypothesis = AlwaysDecrease()
+	analyse_hypothesis_proportion(corpus, hypothesis)
+
+
+def analyse_nudge_proportion(corpus: Corpus):
+	hypothesis = Nudge()
 	analyse_hypothesis_proportion(corpus, hypothesis)

@@ -12,16 +12,3 @@ class AlwaysDecrease(Hypothesis):
 	def check_condition(self, c: list[int]) -> bool:
 		return (c[0] < c[1]) and (c[1] < c[2]) and (c[2] < c[3])
 
-
-def test_always_decrease():
-	h = AlwaysDecrease()
-	c = random.sample(range(0, 7), h.n)
-	if h.check_condition(c):
-		print(h.check_condition(c))
-		print(c)
-		print('*')
-
-
-if __name__ == '__main__':
-	for _ in range(1000):
-		test_always_decrease()
