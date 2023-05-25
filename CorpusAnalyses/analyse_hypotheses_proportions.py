@@ -8,10 +8,14 @@ from Auxiliaries.artificial_generation import generate_corpus
 from Classes.corpus import Corpus
 from Classes.corpus_cs_levels_series_representation import CorpusCSSeries
 from Hypotheses.nudge import nudge
-from Hypotheses.always_0_or_7 import always_0_or_7
-from Hypotheses.always_decreases import always_decreases
+from Hypotheses.always_0_or_7 import Always_0_or_7
+from Hypotheses.always_decreases import AlwaysDecrease
 from CorpusAnalyses.extract_cs_levels_frequency import extract_cs_levels_frequency
 from Auxiliaries.t_test import t_test
+from Auxiliaries.get_all_permutations import get_all_permutations
+from Classes.hypothesis import Hypothesis
+from Hypotheses.always_0_or_7 import Always_0_or_7
+
 
 def collect_cs_levels(corpus: Corpus, utterances=True) -> CorpusCSSeries:
 	list_of_cs_series_of_utterances = []
@@ -30,16 +34,19 @@ def collect_cs_levels(corpus: Corpus, utterances=True) -> CorpusCSSeries:
 		return CorpusCSSeries('turns', list_of_cs_series_of_utterances)
 
 
-def calc_expected_proportion(dict_of_frequencies, hypothesis):
+def calc_expected_proportion(dict_of_frequencies, hypothesis: Hypothesis):
 	proportion = 0
 	cs_levels_options = CS_LEVELS_DECODE.values()
-	for c0 in cs_levels_options:
-		for c1 in cs_levels_options:
-			for c2 in cs_levels_options:
-				for c3 in cs_levels_options:
-					if hypothesis(c0, c1, c2, c3):
-						proportion += \
-							dict_of_frequencies[c0]*dict_of_frequencies[c1]*dict_of_frequencies[c2]*dict_of_frequencies[c3]
+
+	all_permutations_options = get_all_permutations(hypothesis.relevant_indexes, cs_levels_options)
+
+	for permutation in all_permutations_options:
+		c = [-1 for _ in range(hypothesis.n+1)]
+		for i, value in zip(hypothesis.relevant_indexes, permutation):
+			c[i] = value
+		if hypothesis.check_condition(c):
+			probabilities = [dict_of_frequencies[c[i]] for i in hypothesis.relevant_indexes]
+			proportion += np.prod(probabilities)
 	return proportion
 
 
@@ -49,15 +56,11 @@ def calc_actual_proportions(cs_levels: CorpusCSSeries, hypothesis) -> list[float
 		total_counter = 0
 		hypothesis_condition_counter = 0
 		n = len(dialogue_as_cs_levels)
-		for i in range(3, n):
-			c0 = dialogue_as_cs_levels[i-0]
-			c1 = dialogue_as_cs_levels[i-1]
-			c2 = dialogue_as_cs_levels[i-2]
-			c3 = dialogue_as_cs_levels[i-3]
+		for c0_index in range(hypothesis.n, n):
+			c = [dialogue_as_cs_levels[c0_index-i] for i in range(hypothesis.n+1)]
 			total_counter += 1
-			if hypothesis(c0, c1, c2, c3):
+			if hypothesis.check_condition(c):
 				hypothesis_condition_counter += 1
-
 		if total_counter > 0:
 			proportions.append(hypothesis_condition_counter / total_counter)
 
@@ -103,11 +106,12 @@ def analyse_hypothesis_proportion(corpus: Corpus, hypothesis) -> None:
 	print("mean = {}, std = {}".format(np.mean(results), np.std(results)))
 	"""
 
+
 def analyse_always_0_or_7_proportion(corpus: Corpus):
-	hypothesis = always_0_or_7
+	hypothesis = Always_0_or_7()
 	analyse_hypothesis_proportion(corpus, hypothesis)
 
 
 def analyse_always_decreases_proportion(corpus: Corpus):
-	hypothesis = always_decreases
+	hypothesis = AlwaysDecrease()
 	analyse_hypothesis_proportion(corpus, hypothesis)

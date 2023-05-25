@@ -2,7 +2,8 @@ import scipy.stats as stats
 import random
 from Hypotheses.hypothesis_power_calculations import StatisticsPower
 
-ALPHA = 0.05 # Probability of type I error
+ALPHA = 0.05  # Probability of type I error
+
 
 class Hypothesis(object):
 	def __init__(self, name, description, x_description, y_description, f_x, f_y, f_x_required_context_length=0,

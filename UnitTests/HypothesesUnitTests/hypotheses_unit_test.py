@@ -2,11 +2,11 @@ import os
 os.chdir('..\..')
 
 from Hypotheses.random_cs_sequences_generation import generate_random_list_of_series
-from Hypotheses.hypothesis_testing import generate_hypotheses # retreat, nudge, test_hypotheses
+from Hypotheses.hypothesis_testing import generate_hypotheses  # retreat, nudge, test_hypotheses
 from Hypotheses.corpora_representations import CorpusCSSeries
 from Hypotheses.hypothesis_power_calculations import StatisticsPower
 from Hypotheses.hypothesis_test import HypothesisTest
-from Hypotheses.run_hypotheses_testing import generate_specific_hypothesis_test_report
+
 
 def test_test_hypotheses():
 	hypotheses = generate_hypotheses()
@@ -16,7 +16,6 @@ def test_test_hypotheses():
 	probability_of_sample_inclusion = 1.0
 
 	ht = HypothesisTest(h0, cscorpus, probability_of_sample_inclusion)
-	generate_specific_hypothesis_test_report(ht)
 
 def test_calc_power():
 	sp=StatisticsPower(nTT=11, nTF=1000, nFT=3, nFF=4)

@@ -1,26 +1,25 @@
 import math
+import random
 from random import randint
+from Classes.hypothesis import Hypothesis
 
 
-def always_0_or_7(c0: int, c1: int, c2: int, c3: int) -> bool:
-	"""
-	This function returns True if the c0 is either 0 or 7 condition holds and False otherwise
-	:param c0: current CS level
-	:param c1: previous CS level
-	:param c2: CS level before two time periods
-	:param c3: CS level before three time periods
-	:return: True if c0 is 0 or 7 (False otherwise)
-	"""
-	return c0 in [0, 7]
+class Always_0_or_7(Hypothesis):
+	"""This function returns True if the c0 is either 0 or 7 condition holds and False otherwise"""
+	def __init__(self):
+		super().__init__(name='always 0 or 7', n=0, relevant_indexes=[0])
+
+	def check_condition(self, c: list[int]) -> bool:
+		return c[0] in [0, 7]
 
 
 def test_always_0_or_7():
-	c0, c1, c2, c3 = 3, 4, 2, 1
-	c0, c1, c2, c3 = randint(0, 7), randint(0, 7), randint(0, 7), randint(0, 7)
-	print(c0, c1, c2, c3)
-	res = always_0_or_7(c0, c1, c2, c3)
-	print(res)
-	print('*'*3)
+	h = Always_0_or_7()
+	c = [random.randint(0, 7)]
+	if h.check_condition(c):
+		print(c)
+		print(h.check_condition(c))
+		print('*')
 
 
 if __name__ == '__main__':
