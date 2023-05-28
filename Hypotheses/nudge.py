@@ -10,7 +10,7 @@ def avg(c1: int, c2: int, c3: int):
 class Nudge(Hypothesis):
 	"""This function returns True if the nudge condition holds and False otherwise"""
 	def __init__(self):
-		super().__init__(name='nudge', n=3, relevant_indexes=[0, 1, 2, 3])
+		super().__init__(name='Nudge', n=3, relevant_indexes=[0, 1, 2, 3])
 
 	def check_condition(self, c: list[int]) -> bool:
 		if (c[1] < c[2]-1) or (c[1]+c[3] < c[2]):

@@ -3,7 +3,7 @@ import scipy.stats as stats
 import random
 import numpy as np
 
-from Auxiliaries.utils import CS_LEVELS_DECODE
+from Auxiliaries.utils import CS_LEVELS_DECODE, SIGNIFICANCE_LEVEL
 from Auxiliaries.artificial_generation import generate_corpus
 from Classes.corpus import Corpus
 from Classes.corpus_cs_levels_series_representation import CorpusCSSeries
@@ -16,7 +16,6 @@ from Hypotheses.always_0_or_7 import Always_0_or_7
 from Hypotheses.nudge import Nudge
 from Hypotheses.hypotheses import generate_hypotheses
 
-P_VALUE_LIMIT = 0.05
 
 def collect_cs_levels(corpus: Corpus, utterances=True) -> CorpusCSSeries:
 	list_of_cs_series_of_utterances = []
@@ -78,7 +77,12 @@ def generate_equivalent_random_corpus(original_corpus: CorpusCSSeries, cs_levels
 	return CorpusCSSeries('random', collected_output_series)
 
 
-def analyse_hypothesis_proportion(corpus: Corpus, hypothesis: Hypothesis, utterances: bool=True) -> None:
+def analyse_hypothesis_proportion(corpus: Corpus, hypothesis: Hypothesis, utterances: bool = True) \
+		-> tuple[float, float, float, float, float]:
+	"""
+
+	:rtype: object
+	"""
 	print("Hypothesis: " + hypothesis.name)
 	corpus_as_cs_levels_series = collect_cs_levels(corpus, utterances)
 	dict_of_frequencies = extract_cs_levels_frequency(corpus_as_cs_levels_series)
@@ -86,7 +90,8 @@ def analyse_hypothesis_proportion(corpus: Corpus, hypothesis: Hypothesis, uttera
 	p_expected = calc_expected_proportion(dict_of_frequencies, hypothesis)
 	print("p_expected = {}".format(p_expected))
 	proportions_sample = calc_actual_proportions(corpus_as_cs_levels_series, hypothesis)
-	print(f"p_measured = {np.mean(proportions_sample)} +- {np.std(proportions_sample)}")
+	p_measured = np.mean(proportions_sample)
+	print(f"p_measured = {p_measured} +- {np.std(proportions_sample)}")
 	"""
 	print('Sample: ', proportions_sample)
 	print(f"# of samples = {len(proportions_sample)}")
@@ -95,13 +100,15 @@ def analyse_hypothesis_proportion(corpus: Corpus, hypothesis: Hypothesis, uttera
 	print(f"Mean of samples = {np.mean(proportions_sample)}")
 	print(f"STD of samples = {np.std(proportions_sample)}")
 	"""
-	t_stat, p_value = t_test(proportions_sample, p_expected)
+	lower_bound_of_95_confidence_level, upper_bound_of_95_confidence_level, p_value = t_test(proportions_sample, p_expected)
 
-	if P_VALUE_LIMIT > p_value: # significant!
+	if p_value < SIGNIFICANCE_LEVEL: # significant!
 	# Output the p-value of the test statistic (right tailed test)
-		print(f"test_stat = {t_stat}, p_value = {p_value} *")
+		print(f"p_value = {p_value} *")
 	else:
-		print(f"test_stat = {t_stat}, p_value = {p_value} (Insignificant)")
+		print(f"p_value = {p_value} (Insignificant)")
+
+	return p_measured, lower_bound_of_95_confidence_level, upper_bound_of_95_confidence_level, p_expected, p_value
 
 
 def analyse_hypotheses_proportion(corpus: Corpus):
@@ -112,4 +119,5 @@ def analyse_hypotheses_proportion(corpus: Corpus):
 		else:
 			print("Turns:")
 		for hypothesis in hypotheses:
-			analyse_hypothesis_proportion(corpus, hypothesis, utterances)
+			p_measured, lower_bound_of_95_confidence_level, upper_bound_of_95_confidence_level, p_expected, p_value = \
+				analyse_hypothesis_proportion(corpus, hypothesis, utterances)

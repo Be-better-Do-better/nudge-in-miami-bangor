@@ -114,6 +114,7 @@ def get_random_expected_values(frequency_of_lengths_of_subsequences: dict) -> di
 
 	return res
 
+
 def plot_frequency_of_lengths_of_subsequences(frequency_of_lengths_of_subsequences: dict,
 											  title: str, figure_name: str) -> None:
 	fig, ax = plt.subplots()

@@ -1,0 +1,24 @@
+Hypotheses Testing Results
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\hline
+Hypothesis & $p_{measured}$ (95\%CI) & $p_{expected}$ & p-value \\
+\hline \hline
+Nudge & 0.681 (0.624, 0.739) &  0.392 &  1.22e-12 \\
+\hline
+tit-for-tat & 0.677 (0.620, 0.733) &  0.464 &  2.63e-09 \\
+\hline
+Major Language Tit-for-Tat & 0.794 (0.749, 0.839) &  0.559 &  4.42e-13 \\
+\hline
+Always 0 or 7 & 0.899 (0.880, 0.917) &  0.900 &  8.78e-01 \\
+\hline
+Always Decrease & 0.001 (0.000, 0.001) &  0.001 &  2.47e-01 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Hypotheses Testing by Turns}
+\label{table:hypotheses-testing-table-by-turns}
+\end{table}

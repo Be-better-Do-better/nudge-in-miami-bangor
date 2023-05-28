@@ -1,6 +1,8 @@
 import os
 import codecs
 
+SIGNIFICANCE_LEVEL = 0.05
+
 LANGID_CODES = {'en': 'eng', 'es': 'spa'}
 
 FOLDER_OF_PRODUCTS = os.path.join(os.getcwd(), 'Products')
