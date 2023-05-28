@@ -2,8 +2,6 @@ import os
 
 from Auxiliaries.data_loaders import collect_corpus
 from CorpusAnalyses.run_analysis import analyse_corpus
-from Hypotheses.run_hypotheses_testing import run_test_hypothesis, nudge_occurrence_testing,\
-	tit_for_tat_occurrence_testing
 from LanguageAnalysis.collect_samples import collect_samples_by_utterances
 
 MIAMI_BANGOR_CORPUS_NAME = "Miami-Bangor"

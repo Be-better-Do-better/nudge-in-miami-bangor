@@ -15,6 +15,8 @@ class Always_0_or_7(Hypothesis):
 
 def test_always_0_or_7():
 	h = Always_0_or_7()
+	print('name')
+	print(h.name)
 	c = [random.randint(0, 7)]
 	if h.check_condition(c):
 		print(c)

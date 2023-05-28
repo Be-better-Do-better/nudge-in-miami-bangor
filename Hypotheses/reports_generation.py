@@ -1,44 +1,5 @@
 from Classes.corpus_cs_levels_series_representation import CorpusCSSeries
-from Hypotheses.hypothesis import Hypothesis
 from Auxiliaries.report import Report
-from Hypotheses.hypothesis_test import HypothesisTest
-
-
-def generate_specific_hypothesis_test_report(ht: HypothesisTest):
-
-	report_title = ht.hypothesis.name + ' tested on ' + ht.corpus_as_cs_levels_series.name + ' with inclusion probability = {}'.format(ht.probability_of_sample_inclusion)
-	report_filename = ht.hypothesis.name + '_tested_on_' + ht.corpus_as_cs_levels_series.name + '_p_{}.txt'.format(ht.probability_of_sample_inclusion)
-
-	report_content = "**" + ht.corpus_as_cs_levels_series.name + "**"
-	report_content += '\n'*2
-	report_content += str(ht)
-
-	report_content += '\n'*2
-
-	report_content += '\\begin{table}\n'
-	report_content += '\\begin{center}\n'
-	report_content += '\\begin{tabular}{|c||c|c|}\n'
-	report_content += '\\hline\n'
-	report_content += ht.hypothesis.name + ' & True & False \\\\\n'
-	report_content += '\\hline \\hline\n'
-	report_content += 'True & {} & {} \\\\\n'.format(ht.hypothesis.contingency_table[(True, True)],
-	                                             ht.hypothesis.contingency_table[(True, False)])
-	report_content += '\\hline \n'
-	report_content += 'False & {} & {} \\\\\n'.format(ht.hypothesis.contingency_table[(False, True)],
-                                             ht.hypothesis.contingency_table[(False, False)])
-	report_content += '\\hline \n'
-	report_content += '\\end{tabular}\n'
-	report_content += '\\end{center}\n'
-	report_content += '\\caption{Hypothesis testing of ' + ht.hypothesis.name +'}\n'
-	name_of_table = ht.hypothesis.name.lower().replace(' ', '-')
-	report_content += '\\label{table:' + name_of_table + '}\n'
-	report_content += '\\end{table}\n'
-
-	Report(report_title, report_filename, report_content)
-
-def generate_all_hypotheses_reports(hts: dict[tuple[Hypothesis, CorpusCSSeries, float], HypothesisTest]):
-	for h, c, p in hts.keys():
-		generate_specific_hypothesis_test_report(hts[(h, c, p)])
 
 
 def generate_hypothesis_test_per_corpus_report(hypotheses: list[Hypothesis],

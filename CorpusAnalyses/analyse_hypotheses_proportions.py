@@ -14,7 +14,9 @@ from Auxiliaries.get_all_permutations import get_all_permutations
 from Classes.hypothesis import Hypothesis
 from Hypotheses.always_0_or_7 import Always_0_or_7
 from Hypotheses.nudge import Nudge
+from Hypotheses.hypotheses import generate_hypotheses
 
+P_VALUE_LIMIT = 0.05
 
 def collect_cs_levels(corpus: Corpus, utterances=True) -> CorpusCSSeries:
 	list_of_cs_series_of_utterances = []
@@ -76,35 +78,38 @@ def generate_equivalent_random_corpus(original_corpus: CorpusCSSeries, cs_levels
 	return CorpusCSSeries('random', collected_output_series)
 
 
-def analyse_hypothesis_proportion(corpus: Corpus, hypothesis) -> None:
-	corpus_as_cs_levels_series = collect_cs_levels(corpus, utterances=True)
+def analyse_hypothesis_proportion(corpus: Corpus, hypothesis: Hypothesis, utterances: bool=True) -> None:
+	print("Hypothesis: " + hypothesis.name)
+	corpus_as_cs_levels_series = collect_cs_levels(corpus, utterances)
 	dict_of_frequencies = extract_cs_levels_frequency(corpus_as_cs_levels_series)
 	# print(dict_of_frequencies)
 	p_expected = calc_expected_proportion(dict_of_frequencies, hypothesis)
 	print("p_expected = {}".format(p_expected))
 	proportions_sample = calc_actual_proportions(corpus_as_cs_levels_series, hypothesis)
+	print(f"p_measured = {np.mean(proportions_sample)} +- {np.std(proportions_sample)}")
+	"""
 	print('Sample: ', proportions_sample)
 	print(f"# of samples = {len(proportions_sample)}")
 	print(f"Max of samples = {max(proportions_sample)}")
 	print(f"Min of samples = {min(proportions_sample)}")
 	print(f"Mean of samples = {np.mean(proportions_sample)}")
 	print(f"STD of samples = {np.std(proportions_sample)}")
+	"""
 	t_stat, p_value = t_test(proportions_sample, p_expected)
-	print("test_stat = {}".format(t_stat))
+
+	if P_VALUE_LIMIT > p_value: # significant!
 	# Output the p-value of the test statistic (right tailed test)
-	print("p_value = {}".format(p_value))
+		print(f"test_stat = {t_stat}, p_value = {p_value} *")
+	else:
+		print(f"test_stat = {t_stat}, p_value = {p_value} (Insignificant)")
 
 
-def analyse_always_0_or_7_proportion(corpus: Corpus):
-	hypothesis = Always_0_or_7()
-	analyse_hypothesis_proportion(corpus, hypothesis)
-
-
-def analyse_always_decreases_proportion(corpus: Corpus):
-	hypothesis = AlwaysDecrease()
-	analyse_hypothesis_proportion(corpus, hypothesis)
-
-
-def analyse_nudge_proportion(corpus: Corpus):
-	hypothesis = Nudge()
-	analyse_hypothesis_proportion(corpus, hypothesis)
+def analyse_hypotheses_proportion(corpus: Corpus):
+	hypotheses = generate_hypotheses()
+	for utterances in [True, False]:
+		if utterances:
+			print("Utterances:")
+		else:
+			print("Turns:")
+		for hypothesis in hypotheses:
+			analyse_hypothesis_proportion(corpus, hypothesis, utterances)

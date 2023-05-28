@@ -3,9 +3,9 @@ from scipy.stats import ttest_1samp
 
 
 def t_test(sample, expected_population_mean) -> tuple[float, float]:
-	res = ttest_1samp(sample, popmean=expected_population_mean, alternative='greater')
-	t_stat, p_value = ttest_1samp(sample, popmean=expected_population_mean, alternative='greater')
-	print(f"df = { res.df }")
-	print(f" confidence interval [{ res.confidence_interval().low}" f", { res.confidence_interval().high}]")
+	result = ttest_1samp(sample, popmean=expected_population_mean, alternative='two-sided')
+	# lower_bound_of_95_confidence_level = result.confidence_interval().low
+	# higher_bound_of_95_confidence_level = result.confidence_interval().high
+	t_stat, p_value = result.statistic, result.pvalue
 	return t_stat, p_value
 
