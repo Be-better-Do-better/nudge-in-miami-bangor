@@ -2,6 +2,7 @@ from Classes.hypothesis import Hypothesis
 from Hypotheses.nudge import Nudge
 from Hypotheses.tit_for_tat import TitForTat
 from Hypotheses.major_language_tit_for_tat import MajorLanguageTitForTat
+from Hypotheses.close_to_previous import CloseToPrevious
 from Hypotheses.always_0_or_7 import Always_0_or_7
 from Hypotheses.always_decreases import AlwaysDecrease
 
@@ -9,5 +10,5 @@ from Hypotheses.boolean_conditions import backoff_condition, retreat, non_backof
 
 
 def generate_hypotheses():
-	hypotheses = [Nudge(), TitForTat(), MajorLanguageTitForTat(), Always_0_or_7(), AlwaysDecrease()]
+	hypotheses = [Nudge(), TitForTat(), MajorLanguageTitForTat(), CloseToPrevious(), Always_0_or_7(), AlwaysDecrease()]
 	return hypotheses

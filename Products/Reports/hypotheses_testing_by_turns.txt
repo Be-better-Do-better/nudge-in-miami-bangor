@@ -9,9 +9,11 @@ Hypothesis & $p_{measured}$ (95\%CI) & $p_{expected}$ & p-value \\
 \hline \hline
 Nudge & 0.681 (0.624, 0.739) &  0.392 &  1.22e-12 \\
 \hline
-tit-for-tat & 0.677 (0.620, 0.733) &  0.464 &  2.63e-09 \\
+Tit-for-Tat & 0.677 (0.620, 0.733) &  0.464 &  2.63e-09 \\
 \hline
 Major Language Tit-for-Tat & 0.794 (0.749, 0.839) &  0.559 &  4.42e-13 \\
+\hline
+Close by 1 to Previous & 0.718 (0.667, 0.770) &  0.500 &  1.45e-10 \\
 \hline
 Always 0 or 7 & 0.899 (0.880, 0.917) &  0.900 &  8.78e-01 \\
 \hline
