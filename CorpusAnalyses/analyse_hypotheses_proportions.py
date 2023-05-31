@@ -12,7 +12,7 @@ from CorpusAnalyses.extract_cs_levels_frequency import extract_cs_levels_frequen
 from Auxiliaries.t_test import t_test
 from Auxiliaries.get_all_permutations import get_all_permutations
 from Classes.hypothesis import Hypothesis
-from Hypotheses.always_0_or_7 import Always_0_or_7
+from Hypotheses.always_EN_or_SN import Always_EN_or_SN
 from Hypotheses.nudge import Nudge
 from Hypotheses.hypotheses import generate_hypotheses
 
@@ -79,10 +79,6 @@ def generate_equivalent_random_corpus(original_corpus: CorpusCSSeries, cs_levels
 
 def analyse_hypothesis_proportion(corpus: Corpus, hypothesis: Hypothesis, utterances: bool = True) \
 		-> tuple[float, float, float, float, float]:
-	"""
-
-	:rtype: object
-	"""
 	print("Hypothesis: " + hypothesis.name)
 	corpus_as_cs_levels_series = collect_cs_levels(corpus, utterances)
 	dict_of_frequencies = extract_cs_levels_frequency(corpus_as_cs_levels_series)

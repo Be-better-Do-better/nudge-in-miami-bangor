@@ -9,21 +9,32 @@ from CorpusAnalyses.corpus_analyses import collect_languages, langid_classify, a
 from CorpusAnalyses.distances_between_events_in_boolean_sequences_analysis import extract_distances, calc_frequency, calc_relative_frequency, calc_hazards, generate_series, relative_frequency_comparison, plot_relative_frequency
 from CorpusAnalyses.run_analysis import analyse_corpus
 from CorpusAnalyses.analyse_hypotheses_proportions import analyse_hypothesis_proportion, calc_expected_proportion, calc_actual_proportions, extract_cs_levels_frequency, collect_cs_levels
-from Hypotheses.always_0_or_7 import Always_0_or_7
+from Hypotheses.always_EN_or_SN import Always_EN_or_SN
 from Hypotheses.always_decreases import AlwaysDecrease
 
+"""
 REDUCED_MIAMI_BANGOR_CORPUS = collect_corpus(corpus_name='Reduced-Miami-Bangor',
 										 root_dir=os.path.join(os.getcwd(), 'Data', 'bangor_raw_reduced'))
+"""
 
 
 def test_calc_expected_proportion():
-	pass
+	hypothesis = AlwaysDecrease()
+	dict_of_frequencies = {0: 0.3, 1: 0.1, 2: 0.05, 3: 0.05, 4: 0, 5: 0, 6: 0.1, 7: 0.4}
+	p = calc_expected_proportion(dict_of_frequencies, hypothesis)
+	print(p)
+	s = 0
+	for c1 in range(8):
+		s += dict_of_frequencies[c1] * sum([dict_of_frequencies[c2] for c2 in dict_of_frequencies.keys() if c2>c1])
+	print(s)
+
 
 def test_calc_actual_proportion():
 	pass
 
+
 def test_analyse_hypothesis_proportion():
-	hypothesis = Always_0_or_7()
+	hypothesis = Always_EN_or_SN()
 	corpus = REDUCED_MIAMI_BANGOR_CORPUS
 
 	corpus_as_cs_levels_series = collect_cs_levels(corpus, utterances=True)
@@ -45,9 +56,9 @@ def test_analyse_hypothesis_proportion():
 
 
 def run_tests():
-	test_calc_actual_proportion()
+	#  test_calc_actual_proportion()
 	test_calc_expected_proportion()
-	test_analyse_hypothesis_proportion()
+	# test_analyse_hypothesis_proportion()
 
 if __name__ == '__main__':
 	run_tests()

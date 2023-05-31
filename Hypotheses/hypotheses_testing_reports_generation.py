@@ -4,7 +4,7 @@ from Classes.corpus_cs_levels_series_representation import CorpusCSSeries
 from Auxiliaries.report import Report
 from Hypotheses.hypotheses import generate_hypotheses
 from CorpusAnalyses.analyse_hypotheses_proportions import analyse_hypothesis_proportion
-
+from Auxiliaries.utils import SIGNIFICANCE_LEVEL
 
 def generate_hypotheses_testing_report(corpus: Corpus, by_utterances: bool = True) -> Report:
 	def generate_report_head():
@@ -32,7 +32,8 @@ def generate_hypotheses_testing_report(corpus: Corpus, by_utterances: bool = Tru
 
 		report_content += hypothesis.name + f" & {p_measured :3.3f} ({lower_bound_of_95_confidence_level :3.3f}, " \
 		                                    + f"{upper_bound_of_95_confidence_level :3.3f}) & {p_expected: 3.3f} & {p_value: 2.2e}"
-
+		if p_value < SIGNIFICANCE_LEVEL:
+			report_content += "*"
 		report_content += ' \\\\\n'  # between different hypotheses
 		report_content += '\\hline\n'
 

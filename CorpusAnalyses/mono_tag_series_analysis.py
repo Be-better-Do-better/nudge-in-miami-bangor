@@ -5,13 +5,19 @@ from Classes.corpus import Corpus
 from Classes.utterance import Utterance
 from Auxiliaries.utils import FOLDER_OF_FIGURES, PURE_CS_LEVELS_OPTIONS
 
+
 def tag_utterances(corpus: Corpus, tagging_function) -> list[list[str]]:
-	return [[tagging_function(utterance) for utterance in dialogue.utterances]
-							for dialogue in corpus.dialogues]
+	return [[tagging_function(utterance) for utterance in dialogue.utterances] for dialogue in corpus.dialogues]
+
+
+def tag_turns(corpus: Corpus, tagging_function) -> list[list[str]]:
+	return [[tagging_function(turn) for turn in dialogue.turns] for dialogue in corpus.dialogues]
+
 
 def get_list_of_tags(lists_of_list_of_tag_series: list[list[str]]) -> list:
 	flat_list = [tag for sublist in lists_of_list_of_tag_series for tag in sublist]
 	return list(set(flat_list))
+
 
 def subsequences_lengths_extractor(tags_sequence_extracted: list[str]) -> list[(str, int)]:
 	"""
@@ -38,6 +44,7 @@ def subsequences_lengths_extractor(tags_sequence_extracted: list[str]) -> list[(
 		tags_sequence_squoshed.append((prev_tag, current_subsequence_length))
 	return tags_sequence_squoshed
 
+
 def get_frequency_of_lengths_of_subsequences(lists_of_list_of_tag_series: list[list[str]]) -> dict:
 	temp_relative_frequency_of_subsequences = {}
 
@@ -58,6 +65,7 @@ def get_frequency_of_lengths_of_subsequences(lists_of_list_of_tag_series: list[l
 		relative_frequency_of_subsequences[tag] = convert_to_frequency_vector(temp_relative_frequency_of_subsequences[tag])
 	return relative_frequency_of_subsequences
 
+
 def convert_to_frequency_vector(frequency_counter: dict) -> list:
 	max_key = max(frequency_counter.keys())
 	frequency_vector = [0 for _ in range(max_key+1)]
@@ -65,12 +73,14 @@ def convert_to_frequency_vector(frequency_counter: dict) -> list:
 		frequency_vector[i] = frequency
 	return frequency_vector
 
+
 def get_sorted_list_of_tags(frequency_of_lengths_of_subsequences: dict) -> list[str]:
 	list_of_tag_sum_tuples = []
 	for tag, tag_freq in frequency_of_lengths_of_subsequences.items():
 		list_of_tag_sum_tuples.append((tag, sum([i*tag_freq[i] for i in range(len(tag_freq))])))
-	list_of_tag_sum_tuples.sort(key=(lambda x: x[1]), reverse=True) # sort by second
+	list_of_tag_sum_tuples.sort(key=(lambda x: x[1]), reverse=True)  # sort by second
 	return [item[0] for item in list_of_tag_sum_tuples]
+
 
 def get_random_expected_values(frequency_of_lengths_of_subsequences: dict) -> dict:
 	"""This function returns the expected # of relative sub-sequences of a specific language tag,
@@ -98,10 +108,11 @@ def get_random_expected_values(frequency_of_lengths_of_subsequences: dict) -> di
 		p = probability_of_tags[current_sum_of_tag]
 		sum_of_current_tag = sum_of_tag[current_tag]
 		# normalization_factor = sum([(1-p)*p**(s-1)*s for s in range(1, len(frequency_of_lengths_of_subsequences_of_current_tag)+1)])
-		normalization_factor = sum([(1-p)*p**(s-1)*s for s in range(1, len(frequency_of_lengths_of_subsequences_of_current_tag))])
+		# normalization_factor = sum([(1-p)*p**(s-1)*s for s in range(1, len(frequency_of_lengths_of_subsequences_of_current_tag))])
+		normalization_factor = sum([s*(1-p)*p**s for s in range(1, len(frequency_of_lengths_of_subsequences_of_current_tag))])
 		if normalization_factor > 0:
 			# r = [sum_of_current_tag/normalization_factor*(1-p)*p**(s-1) for s in range(1, len(frequency_of_lengths_of_subsequences_of_current_tag)+1)]
-			r = [sum_of_current_tag/normalization_factor*(1-p)*p**(s-1) for s in range(1, len(frequency_of_lengths_of_subsequences_of_current_tag))]
+			r = [sum_of_current_tag/normalization_factor*s*(1-p)*p**s for s in range(1, len(frequency_of_lengths_of_subsequences_of_current_tag))]
 			# r.insert(0, 0)
 			res[current_tag] = r.copy()
 
@@ -144,20 +155,29 @@ def plot_frequency_of_lengths_of_subsequences(frequency_of_lengths_of_subsequenc
 	plt.savefig(os.path.join(FOLDER_OF_FIGURES, figure_name))
 	plt.show()
 
+
 def tag_function_eng_spa_cs(utterance: Utterance) -> str:
 	if utterance.cs_level in PURE_CS_LEVELS_OPTIONS:
 		return 'CS'
 	else:
 		return utterance.major_lang
 
+
 def analyse_frequency_of_lengths_of_subsequences(corpus: Corpus) -> None:
 	
-	# Analyse by major language (English/Spanish):
+	# Analyse Utterances by major language (English/Spanish):
 	lists_of_list_of_tag_series = tag_utterances(corpus, tagging_function=(lambda u: u.major_lang))
 	frequency_of_lengths_of_subsequences = get_frequency_of_lengths_of_subsequences(lists_of_list_of_tag_series)
 	plot_frequency_of_lengths_of_subsequences(frequency_of_lengths_of_subsequences,
-											  title='Sub-Sequence Length Analysis',
-											  figure_name='mono_lingual_major_subsequences_lengths_histogram.png')
+											  title='Sub-Sequence Length Analysis of Utterances',
+											  figure_name='mono_lingual_major_subsequences_lengths_utterances_histogram.png')
+
+	# Analyse Turns by major language (English/Spanish):
+	lists_of_list_of_tag_series = tag_turns(corpus, tagging_function=(lambda u: u.major_lang))
+	frequency_of_lengths_of_subsequences = get_frequency_of_lengths_of_subsequences(lists_of_list_of_tag_series)
+	plot_frequency_of_lengths_of_subsequences(frequency_of_lengths_of_subsequences,
+											  title='Sub-Sequence Length Analysis of Turns',
+											  figure_name='mono_lingual_major_subsequences_lengths_turns_histogram.png')
 
 	# Analyse by general language type (English/Spanish/CS):
 	lists_of_list_of_tag_series = tag_utterances(corpus, tagging_function=tag_function_eng_spa_cs)

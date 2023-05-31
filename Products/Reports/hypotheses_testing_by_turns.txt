@@ -7,17 +7,17 @@ Hypotheses Testing Results
 \hline
 Hypothesis & $p_{measured}$ (95\%CI) & $p_{expected}$ & p-value \\
 \hline \hline
-Nudge & 0.681 (0.624, 0.739) &  0.392 &  1.22e-12 \\
+Tit-for-Tat & 0.677 (0.620, 0.733) &  0.464 &  2.63e-09* \\
 \hline
-Tit-for-Tat & 0.677 (0.620, 0.733) &  0.464 &  2.63e-09 \\
+Major Language Tit-for-Tat & 0.794 (0.749, 0.839) &  0.559 &  4.42e-13* \\
 \hline
-Major Language Tit-for-Tat & 0.794 (0.749, 0.839) &  0.559 &  4.42e-13 \\
+Close by 1 to Previous & 0.718 (0.667, 0.770) &  0.500 &  1.45e-10* \\
 \hline
-Close by 1 to Previous & 0.718 (0.667, 0.770) &  0.500 &  1.45e-10 \\
+Always EN or SN & 0.899 (0.880, 0.917) &  0.900 &  8.78e-01 \\
 \hline
-Always 0 or 7 & 0.899 (0.880, 0.917) &  0.900 &  8.78e-01 \\
+Always Decrease & 0.162 (0.134, 0.191) &  0.268 &  3.37e-09* \\
 \hline
-Always Decrease & 0.001 (0.000, 0.001) &  0.001 &  2.47e-01 \\
+Nudge & 0.681 (0.624, 0.739) &  0.392 &  1.22e-12* \\
 \hline
 \end{tabular}
 \end{center}
