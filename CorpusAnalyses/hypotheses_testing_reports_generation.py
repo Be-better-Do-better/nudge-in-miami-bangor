@@ -1,9 +1,7 @@
 from Classes.corpus import Corpus
-from Classes.hypothesis import Hypothesis
-from Classes.corpus_cs_levels_series_representation import CorpusCSSeries
 from Auxiliaries.report import Report
 from Hypotheses.hypotheses import generate_hypotheses
-from CorpusAnalyses.analyse_hypotheses_proportions import analyse_hypothesis_proportion
+from CorpusAnalyses.NextLevelPredition.analyse_hypotheses_proportions import analyse_hypothesis_proportion
 from Auxiliaries.utils import SIGNIFICANCE_LEVEL
 
 def generate_hypotheses_testing_report(corpus: Corpus, by_utterances: bool = True) -> Report:

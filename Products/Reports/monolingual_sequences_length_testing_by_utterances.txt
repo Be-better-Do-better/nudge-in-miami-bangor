@@ -1,0 +1,18 @@
+Monolingual Sequences Lengths Results
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\hline
+ & $\bar{s}_{measured}$ (95\%CI) & $s_{expected}$ & p-value \\
+\hline \hline
+eng & 6.129 (4.162, 8.095) &  2.973 &  2.38e-03* \\
+\hline
+spa & 8.643 (6.916, 10.369) &  1.507 &  3.16e-10* \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Monolingual Sequences Lengths Testing by Utterances}
+\label{table:monolingual-sequences-lengths-testing-table-by-utterances}
+\end{table}

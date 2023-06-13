@@ -2,13 +2,8 @@ import os
 import numpy as np
 
 os.chdir('../..')
-from Auxiliaries.data_loaders import collect_corpus
 from Auxiliaries.t_test import t_test
-from Classes.hypothesis import Hypothesis
-from CorpusAnalyses.corpus_analyses import collect_languages, langid_classify, analyse_langid_results, analyse_cs_level_classifier, analyses_cs_bigrams_distribution
-from CorpusAnalyses.distances_between_events_in_boolean_sequences_analysis import extract_distances, calc_frequency, calc_relative_frequency, calc_hazards, generate_series, relative_frequency_comparison, plot_relative_frequency
-from CorpusAnalyses.run_analysis import analyse_corpus
-from CorpusAnalyses.analyse_hypotheses_proportions import analyse_hypothesis_proportion, calc_expected_proportion, calc_actual_proportions, extract_cs_levels_frequency, collect_cs_levels
+from CorpusAnalyses.NextLevelPredition.analyse_hypotheses_proportions import calc_expected_proportion, calc_actual_proportions, extract_cs_levels_frequency, collect_cs_levels
 from Hypotheses.always_EN_or_SN import Always_EN_or_SN
 from Hypotheses.always_decreases import AlwaysDecrease
 

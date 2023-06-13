@@ -2,7 +2,7 @@ import os
 os.chdir('../..')
 from Auxiliaries.data_loaders import collect_corpus
 from CorpusAnalyses.corpus_analyses import collect_languages, langid_classify, analyse_langid_results, analyse_cs_level_classifier, analyses_cs_bigrams_distribution
-from CorpusAnalyses.distances_between_events_in_boolean_sequences_analysis import extract_distances, calc_frequency, calc_relative_frequency, calc_hazards, generate_series, relative_frequency_comparison, plot_relative_frequency
+from CorpusAnalyses.MonolingualSequencesAnalysis.distances_between_events_in_boolean_sequences_analysis import extract_distances, calc_frequency, calc_relative_frequency, calc_hazards, generate_series, relative_frequency_comparison, plot_relative_frequency
 from CorpusAnalyses.run_analysis import analyse_corpus
 
 

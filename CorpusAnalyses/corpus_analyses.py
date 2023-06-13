@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import langid
 
 from LanguageAnalysis.str_cs_level_analysis import calc_cs_level_for_str
-from CorpusAnalyses.distances_between_events_in_boolean_sequences_analysis import extract_distances, calc_frequency, \
+from CorpusAnalyses.MonolingualSequencesAnalysis.distances_between_events_in_boolean_sequences_analysis import extract_distances, calc_frequency, \
 	calc_relative_frequency, plot_relative_frequency
 from CorpusAnalyses.categorial_subsequences_length_analysis import collect_subsequence_frequencies, \
 	unite_subsequence_frequencies, plot_relative_frequency_comparison, calc_relative_frequency_of_tags

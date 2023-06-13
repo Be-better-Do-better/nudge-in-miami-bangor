@@ -3,7 +3,7 @@ import random
 
 os.chdir('../..')
 from Auxiliaries.data_loaders import collect_corpus
-from CorpusAnalyses.mono_tag_series_analysis import tag_utterances, get_list_of_tags, subsequences_lengths_extractor, analyse_frequency_of_lengths_of_subsequences, get_random_expected_values
+from CorpusAnalyses.MonolingualSequencesAnalysis.mono_tag_series_analysis import tag_utterances, get_list_of_tags, subsequences_lengths_extractor, analyse_frequency_of_lengths_of_subsequences, get_random_expected_values
 
 
 
@@ -34,13 +34,15 @@ def test_get_random_expected_values():
 	frequency_of_lengths_of_subsequences = {}
 	frequency_of_lengths_of_subsequences['eng'] = [0, 2]
 	frequency_of_lengths_of_subsequences['spa'] = [0, 3, 2, 1]
-	get_random_expected_values(frequency_of_lengths_of_subsequences, tag='eng')
+	get_random_expected_values(frequency_of_lengths_of_subsequences)
+
 
 def run_tests():
-	# test_tag_utterances()
-	# test_subsequences_lengths_extractor()
-	# test_analyse_frequency_of_lengths_of_subsequences()
+	test_tag_utterances()
+	test_subsequences_lengths_extractor()
+	test_analyse_frequency_of_lengths_of_subsequences()
 	test_get_random_expected_values()
+
 
 if __name__ == '__main__':
 	run_tests()

@@ -1,8 +1,10 @@
 from Classes.corpus import Corpus
-from CorpusAnalyses.corpus_analyses import analyse_corpus_for_inter_sentential_cs, analyse_corpus_for_intra_sentential_cs, analyse_langid_results, analyse_raw_cs_levels_distribution, analyses_cs_bigrams_distribution
-from CorpusAnalyses.mono_tag_series_analysis import analyse_frequency_of_lengths_of_subsequences
-from CorpusAnalyses.analyse_hypotheses_proportions import analyse_hypotheses_proportion
-from Hypotheses.hypotheses_testing_reports_generation import generate_hypotheses_testing_report
+from CorpusAnalyses.corpus_analyses import analyse_corpus_for_inter_sentential_cs, analyse_corpus_for_intra_sentential_cs, \
+	analyse_raw_cs_levels_distribution, analyses_cs_bigrams_distribution
+from CorpusAnalyses.MonolingualSequencesAnalysis.mono_tag_series_analysis import analyse_frequency_of_lengths_of_subsequences
+from CorpusAnalyses.NextLevelPredition.analyse_hypotheses_proportions import analyse_hypotheses_proportion
+from CorpusAnalyses.hypotheses_testing_reports_generation import generate_hypotheses_testing_report
+from CorpusAnalyses.monolingual_sequences_analysis_reports_generation import generate_monolingual_sequences_lengths_testing_report
 
 
 def analyse_corpus(corpus: Corpus):
@@ -31,3 +33,7 @@ def analyse_corpus(corpus: Corpus):
 
 	# Sub-sequences Lengths
 	analyse_frequency_of_lengths_of_subsequences(corpus)
+
+	# Generate reports:
+	generate_monolingual_sequences_lengths_testing_report(corpus, True)  # Report by Utterances
+	generate_monolingual_sequences_lengths_testing_report(corpus, False)  # Report by Turns
