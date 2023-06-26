@@ -1,10 +1,10 @@
 from Classes.hypothesis import Hypothesis
 from Auxiliaries.utils import CS_LEVELS_OPTIONS
 
-class MajorLanguageTitForTat(Hypothesis):
+class MajorLanguageReplication(Hypothesis):
 	"""This function returns True if the major language of c0 is the same as the major language of c1 and False otherwise"""
 	def __init__(self):
-		super().__init__(name='Major Language Tit-for-Tat', n=1, relevant_indexes=[0, 1])
+		super().__init__(name='Major Language Replication', n=1, relevant_indexes=[0, 1])
 
 	def check_condition(self, c: list[int]) -> bool:
 		major_lang_of_c0 = CS_LEVELS_OPTIONS[c[0]][0]  # first letter of CS_LEVELS_OPTIONS is either 'E' or 'S'
