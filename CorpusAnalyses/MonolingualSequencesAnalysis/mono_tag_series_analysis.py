@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 from Classes.corpus import Corpus
 from Classes.utterance import Utterance
-from Auxiliaries.utils import FOLDER_OF_FIGURES, PURE_CS_LEVELS_OPTIONS
+from Auxiliaries.utils import FOLDER_OF_FIGURES, PURE_CS_LEVELS_OPTIONS, WELL_DEFINED_LANGUAGE_OPTIONS
 
 
 def tag_utterances(corpus: Corpus, tagging_function) -> list[list[str]]:
@@ -82,77 +82,197 @@ def get_sorted_list_of_tags(frequency_of_lengths_of_subsequences: dict) -> list[
 	return [item[0] for item in list_of_tag_sum_tuples]
 
 
-def get_random_expected_values(frequency_of_lengths_of_subsequences: dict) -> dict:
+def get_random_expected_frequencies(frequency_of_lengths_of_subsequences: dict) -> dict:
 	"""This function returns the expected # of relative sub-sequences of a specific language tag,
 	if the distribution was completely random"""
-	# Get total sum of utterances/turns:
-	total_sum = 0
-	sum_of_tag = {}
 
-	for current_tag, frequency_of_lengths_of_subsequences_of_current_tag in frequency_of_lengths_of_subsequences.items():
-		sum_of_current_tag =\
-			sum([i*frequency_of_lengths_of_subsequences_of_current_tag[i] for i in range(len(frequency_of_lengths_of_subsequences_of_current_tag))])
-		sum_of_tag[current_tag] = sum_of_current_tag
+	def get_p_L(f: dict) -> dict:
+		"""f = frequency_of_lengths_of_subsequences (dict)
+		has the format:
+			f[L] = [0, f(1, L), f(2, L), ... ,f(n_L, L)]
+			(list of ints which starts with 0, since the frequency of 0-length subsequence is 0)
+			where L might be 'eng' or 'spa'
+		and we return
+		p['eng'] = probability of an English utterance/turn
+		p['spa'] = probability of a Spanish utterance/turn
+		"""
+		# Get total sum of utterances/turns:
+		total_sum = 0
+		sum_of_tag = {}
 
-		total_sum += sum_of_current_tag
+		for current_tag, frequency_of_lengths_of_subsequences_of_current_tag in f.items():
+			sum_of_current_tag =\
+				sum([i*frequency_of_lengths_of_subsequences_of_current_tag[i] for i in range(len(frequency_of_lengths_of_subsequences_of_current_tag))])
+			sum_of_tag[current_tag] = sum_of_current_tag
 
-	# Calc probability of each language tag:
-	if total_sum > 0:
-		probability_of_tags = {}
-		for current_tag, current_sum_of_tag in sum_of_tag.items():
-			probability_of_tags[current_sum_of_tag] = sum_of_current_tag / total_sum
+			total_sum += sum_of_current_tag
 
-	# Calculate Results:
-	res = {}
-	for current_tag, frequency_of_lengths_of_subsequences_of_current_tag in frequency_of_lengths_of_subsequences.items():
-		p = probability_of_tags[current_sum_of_tag]
-		sum_of_current_tag = sum_of_tag[current_tag]
-		# normalization_factor = sum([(1-p)*p**(s-1)*s for s in range(1, len(frequency_of_lengths_of_subsequences_of_current_tag)+1)])
-		# normalization_factor = sum([(1-p)*p**(s-1)*s for s in range(1, len(frequency_of_lengths_of_subsequences_of_current_tag))])
-		normalization_factor = sum([s*(1-p)*p**s for s in range(1, len(frequency_of_lengths_of_subsequences_of_current_tag))])
-		if normalization_factor > 0:
-			# r = [sum_of_current_tag/normalization_factor*(1-p)*p**(s-1) for s in range(1, len(frequency_of_lengths_of_subsequences_of_current_tag)+1)]
-			r = [sum_of_current_tag/normalization_factor*s*(1-p)*p**s for s in range(1, len(frequency_of_lengths_of_subsequences_of_current_tag))]
-			# r.insert(0, 0)
-			res[current_tag] = r.copy()
+		# Calc probability of each language tag:
+		if total_sum > 0:
+			p_L = {}
+			for current_tag, current_sum_of_tag in sum_of_tag.items():
+				p_L[current_tag] = current_sum_of_tag / total_sum
 
-	# Check validity:
-	after_sum_of_tags = {}
-	for current_tag, frequency_of_lengths_of_subsequences_of_current_tag in res.items():
-		sum_of_current_tag =\
-			sum([i*frequency_of_lengths_of_subsequences_of_current_tag[i] for i in range(len(frequency_of_lengths_of_subsequences_of_current_tag))])
-		after_sum_of_tags[current_tag] = sum_of_current_tag
+		return p_L
 
-	return res
+	def get_N_L(f: dict) -> dict:
+		"""This function returns the total number of sub-sequences
+		WARNING: This is not equal to the number of utterances/turns!!!
+		(every sub-sequence is counted only once!)
+		e.g.:
+		f['eng'] = [0, f(s=1, L='eng')=4, f(s=2, L='eng')=2, f(s=3, L='eng')=0, f(s=4, L='eng')=1]
+		f['spa'] = [0, f(s=1, L='spa')=2, f(s=2, L='spa')=1]
+		returns:
+		N_L['eng'] = 7
+		N_L['spa'] = 3
+		"""
+		N_L = {}
+		for current_tag, frequency_of_lengths_of_subsequences_of_current_tag in f.items():
+			sum_of_current_tag =\
+				sum([frequency_of_lengths_of_subsequences_of_current_tag[i] for i in range(len(frequency_of_lengths_of_subsequences_of_current_tag))])
+			N_L[current_tag] = sum_of_current_tag
+		return N_L
+
+	def get_n_L(f: dict) -> dict:
+		"""This function returns the max length sub-sequence for each language tag
+		WARNING: This is not equal to N_L (The total # of subsequences of any length for language L)
+		e.g.:
+		f['eng'] = [0, f(s=1, L='eng')=4, f(s=2, L='eng')=2, f(s=3, L='eng')=0, f(s=4, L='eng')=1]
+		f['spa'] = [0, f(s=1, L='spa')=2, f(s=2, L='spa')=1]
+		returns:
+		n_L['eng'] = 4
+		n_L['spa'] = 2
+		"""
+		n_L = {}
+		for current_tag, frequency_of_lengths_of_subsequences_of_current_tag in f.items():
+			n_L[current_tag] = len(frequency_of_lengths_of_subsequences_of_current_tag)-1
+		return n_L
+
+	def get_sigma_L(p_L: dict, n_L:dict) -> dict:
+		sigma_L = {}
+
+		for tag in p_L.keys():
+			p = p_L[tag]
+			n = n_L[tag]
+			sigma_L[tag] = sum([(1-p)*p**s for s in range(1, n+1)])
+		return sigma_L
+
+	def get_infinite_sum_probability(p_L: dict, n_L:dict) -> dict[list]:
+		"""
+		This function returns a vector for each language tag.
+		p(s, L) = p_L**(s-1)*(1-p_L) for s=1, 2, ..., n_L
+		for L = 'eng', 'spa'
+		:return:
+		"""
+		p_s_L = {}
+		for tag in p_L.keys():
+			p = p_L[tag]
+			n = n_L[tag]
+			p_s_L[tag] = [p**(s-1)*(1-p) for s in range(n)]
+		return p_s_L
+
+	def get_finite_sum_probability(sigma_L: dict, p_s_L: dict) -> dict:
+		p_s_L_tilde = {}
+		for tag in sigma_L.keys():
+			sigma = sigma_L[tag]
+			p_s_L_vector = p_s_L[tag]
+			if sigma > 0:
+				p_s_L_tilde[tag] = [p_s_L_vector[i]/sigma for i in range(len(p_s_L_vector))]
+
+		return p_s_L_tilde
+
+	def get_expected_values(p_s_L_tilde: dict, N_L:dict) -> dict:
+		expected_frequency = {}
+		for tag in p_s_L_tilde.keys():
+			N_L_value = N_L[tag]
+			p_s_L_tilde_values = p_s_L_tilde[tag]
+			expected_frequency[tag] = [N_L_value*val for val in p_s_L_tilde_values]
+		return expected_frequency
+
+	p_L = get_p_L(frequency_of_lengths_of_subsequences)
+	N_L = get_N_L(frequency_of_lengths_of_subsequences)
+	n_L = get_n_L(frequency_of_lengths_of_subsequences)
+	sigma_L = get_sigma_L(p_L, n_L)
+	p_s_L = get_infinite_sum_probability(p_L, n_L)
+	p_s_L_tilde = get_finite_sum_probability(sigma_L, p_s_L)
+
+	return get_expected_values(p_s_L_tilde, N_L)
 
 
 def plot_frequency_of_lengths_of_subsequences(frequency_of_lengths_of_subsequences: dict,
 											  title: str, figure_name: str) -> None:
+	def get_tag_first_letter(tag: str) -> str:
+		""" This function replaces:
+			eng -> E
+			spa -> S
+			as in paper
+		"""
+		return tag[0].upper()
+
+	def get_measured_tag_label(tag: str) -> str:
+		""" This replaces:
+		eng -> f(s, E) - measured
+		spa -> f(s, S) - measured
+		as in paper
+		or:
+		EN -> f(s, EN) - measured
+		ET -> f(s, ET) - measured
+		...
+		SN -> f(s, SN) - measured
+		"""
+		if tag in WELL_DEFINED_LANGUAGE_OPTIONS:
+			letter = get_tag_first_letter(tag)
+			return r'f(s, '+letter+') - measured'
+		else:
+			return r'f(s, '+tag+') - measured'
+
+	def get_expected_tag_label(tag):
+		""" This replaces:
+		eng -> $\hat{f}$(s, E) - expected
+		spa -> $\hat{f}$(s, S) - expected
+		as in paper
+		or:
+		EN -> $\hat{f}$(s, EN) - expected
+		ET -> $\hat{f}$(s, ET) - expected
+		...
+		SN -> $\hat{f}$(s, SN) - expected
+		"""
+		if tag in WELL_DEFINED_LANGUAGE_OPTIONS:
+			letter = get_tag_first_letter(tag)
+			return r'$\hat{f}$(s, '+letter+') - expected'
+		else:
+			return r'$\hat{f}$(s, '+tag+') - expected'
+
 	fig, ax = plt.subplots()
 	sorted_list_of_tags = get_sorted_list_of_tags(frequency_of_lengths_of_subsequences)
-
+	print("sorted_list_of_tags")
+	print(sorted_list_of_tags)
 	# for tag in frequency_of_lengths_of_subsequences.keys():
 	for tag in sorted_list_of_tags:
 		x = [i for i in range(0, len(frequency_of_lengths_of_subsequences[tag]))]
-		ax.loglog(x, frequency_of_lengths_of_subsequences[tag], linestyle="None", marker='.', label=tag)
-
+		# ax.loglog(x, frequency_of_lengths_of_subsequences[tag], linestyle="None", marker='.', label=tag)
+		ax.loglog(x, frequency_of_lengths_of_subsequences[tag], linestyle="None", marker='.', label=get_measured_tag_label(tag))
 	# ax.autoscale(False, axis="x")
 	# ax.autoscale(False, axis="y")
 	# Expected results:
-	expected_results = get_random_expected_values(frequency_of_lengths_of_subsequences)
+	expected_results = get_random_expected_frequencies(frequency_of_lengths_of_subsequences)
+
 	for tag in sorted_list_of_tags:
 		x = [i for i in range(1, len(frequency_of_lengths_of_subsequences[tag]))]
-		ax.loglog(x, expected_results[tag], linestyle="dashed", marker='_', label=tag+' randomly expected')
+		# ax.loglog(x, expected_results[tag], linestyle="dashed", marker='_', label=tag+' randomly expected')
+		ax.loglog(x, expected_results[tag], linestyle="dashed", marker='_', label=get_expected_tag_label(tag))
 
-	ax.set_xlim(0.5, 5000)
-	ax.set_ylim(0.5, 5000)
+	ax.set_xlim(0.5, 50000)
+	ax.set_ylim(0.5, 10000)
 	plt.ylabel('# of occurances')
 	plt.xlabel('sub-sequence length')
 	plt.ylabel('Frequency')
 	ax.legend()
 	plt.title(title)
-
-	plt.savefig(os.path.join(FOLDER_OF_FIGURES, figure_name))
+	prev_dir = os.getcwd()
+	os.chdir(FOLDER_OF_FIGURES)
+	plt.savefig(figure_name)
+	os.chdir(prev_dir)
 	plt.show()
 
 

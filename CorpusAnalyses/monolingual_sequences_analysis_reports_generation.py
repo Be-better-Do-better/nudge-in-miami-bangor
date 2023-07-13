@@ -53,4 +53,4 @@ def generate_monolingual_sequences_lengths_testing_report(corpus: Corpus, by_utt
 		report_filename = 'monolingual_sequences_length_testing_by_utterances.txt'
 	else:
 		report_filename = 'monolingual_sequences_length_testing_by_turns.txt'
-	Report(report_title, report_filename, report_content)
+	return Report(report_title, report_filename, report_content)

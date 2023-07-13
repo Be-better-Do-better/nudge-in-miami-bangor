@@ -1,10 +1,31 @@
-CS Levels Distribution in Utterances
+Pure CS Levels Distribution in Utterances
 
-EN: 23171 (64.09%)
-ET: 470 (1.30%)
-EL: 60 (0.17%)
-EP: 293 (0.81%)
-SP: 247 (0.68%)
-SL: 219 (0.61%)
-ST: 323 (0.89%)
-SN: 11373 (31.46%)
+\begin{table*}[hbt]
+\centering
+\begin{tabular}{||c|c|c|c||}
+\hline
+CS Level & \# of Occurrences in Corpus &\ \% of Total &\ \% of CS \\ [0.5ex]
+\hline \hline
+EN & 23171 & 64.09 & - \\
+\hline
+ET & 470 & 1.30 &  29.16 \\
+\hline
+EL & 60 & 0.17 &  3.72 \\
+\hline
+EP & 293 & 0.81 &  18.18 \\
+\hline
+SP & 247 & 0.68 &  15.32 \\
+\hline
+SL & 219 & 0.61 &  13.59 \\
+\hline
+ST & 323 & 0.89 &  20.04 \\
+\hline
+SN & 11373 & 31.46 & - \\
+\hline
+\hline
+Total & 36156 & 100\% & 100\%\\
+\hline
+\end{tabular}
+\caption{Distribution of CS levels in the BM corpus.}
+\label{table:cs-levels-presence}
+\end{table*}

@@ -118,43 +118,62 @@ def analyse_cs_level_classifier(corpus: Corpus) -> None:
 # plt.show()
 
 
-def analyse_raw_cs_levels_distribution(corpus: Corpus) -> None:
+def analyse_raw_cs_levels_distribution(corpus: Corpus, by_utterances: bool = True) -> Report:
+
+	def generate_report_head() -> str:
+		report_content = ''
+		report_content += '\\begin{table*}[hbt]\n'
+		report_content += '\\centering\n'
+		report_content += '\\begin{tabular}{||c|c|c|c||}\n'
+		report_content += '\\hline\n'
+		report_content += 'CS Level & \\# of Occurrences in Corpus &\\ \\% of Total &\ \% of CS \\\\ [0.5ex]\n'
+		report_content += '\\hline \\hline\n'
+
+		return report_content
+
+	def generate_report_bottom() -> str:
+		report_bottom = '\\hline\n'
+		report_bottom += '\\end{tabular}\n'
+		report_bottom += '\\caption{Distribution of CS levels in the BM corpus.}\n'
+		report_bottom += '\\label{table:cs-levels-presence}\n'
+		report_bottom += '\\end{table*}\n'
+		return report_bottom
+
+	report_content = generate_report_head()
+
 	c = Counter()
 	for dialogue in corpus.dialogues:
 		for utterance in dialogue.utterances:
 			c.update([utterance.cs_level])
 	total_sum = sum(c.values())
-	text_to_write = ''
+	total_sum_of_pure_cs_levels = sum(c[cs_level] for cs_level in PURE_CS_LEVELS_OPTIONS)
+
 	for cs_level in CS_LEVELS_OPTIONS:
-		text_to_write += cs_level + ': {} ({:.2f}%)\n'.format(c[cs_level], c[cs_level] / total_sum * 100)
+		report_content += cs_level + f" & {c[cs_level]} & {c[cs_level] / total_sum * 100 :2.2f} & "
+		if cs_level in PURE_CS_LEVELS_OPTIONS:
+			report_content += f" {c[cs_level] / total_sum_of_pure_cs_levels * 100 :2.2f}"
+		else:  # In EN/SN only
+			report_content += '-'
+		report_content += ' \\\\\n'  # between cs-levels
+		report_content += '\\hline\n'
 
-	Report(report_title='CS Levels Distribution in Utterances',
-	       report_filename='cs_levels_distribution_in_utterances.txt',
-	       report_content=text_to_write)
+	report_content += '\\hline\n'
+	report_content += f"Total & {total_sum} & 100\\% & 100\\%\\\\\n"
+	report_content += generate_report_bottom()
 
-	total_sum = sum(c[cs_level] for cs_level in PURE_CS_LEVELS_OPTIONS)
-	text_to_write = ''
-	for cs_level in PURE_CS_LEVELS_OPTIONS:
-		text_to_write += cs_level + ': {} ({:.2f}%)\n'.format(c[cs_level], c[cs_level] / total_sum * 100)
+	if by_utterances:
+		report_title = 'Pure CS Levels Distribution in Utterances'
+	else:
+		report_title = 'Pure CS Levels Distribution in Turns'
 
-	Report(report_title='Pure CS Levels Distribution in Utterances',
-	       report_filename='pure_cs_levels_distribution_in_utterances.txt',
-	       report_content=text_to_write)
+	if by_utterances:
+		report_filename = 'cs_levels_distribution_in_utterances.txt'
+	else:
+		report_filename = 'cs_levels_distribution_in_turns.txt'
 
-	c = Counter()
-	for dialogue in corpus.dialogues:
-		for turn in dialogue.turns:
-			c.update([turn.cs_level])
-
-	total_sum = sum(c.values())
-	sorted(c, key=c.get, reverse=True)
-	text_to_write = ''
-	for cs_level in c.keys():
-		text_to_write += cs_level + ': {} ({:.2f}%)\n'.format(c[cs_level], c[cs_level] / total_sum * 100)
-
-	Report(report_title='CS Levels Distribution in Turns',
-	       report_filename='cs_levels_distribution_in_turns.txt',
-	       report_content=text_to_write)
+	return Report(report_title=report_title,
+	       report_filename=report_filename,
+	       report_content=report_content)
 
 
 def analyses_cs_bigrams_distribution(corpus: Corpus) -> None:
