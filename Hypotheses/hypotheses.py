@@ -2,7 +2,7 @@ from Hypotheses.nudge import Nudge
 from Hypotheses.replication import Replication
 from Hypotheses.major_language_replication import MajorLanguageReplication
 from Hypotheses.close_to_previous import CloseToPrevious
-from Hypotheses.always_EN_or_SN import Always_EN_or_SN
+from Hypotheses.dont_mix import Always_EN_or_SN
 from Hypotheses.always_decreases import AlwaysDecrease
 
 

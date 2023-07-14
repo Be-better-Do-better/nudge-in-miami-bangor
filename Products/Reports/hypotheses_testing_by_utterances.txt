@@ -13,7 +13,7 @@ Major Language Replication & 0.835 (0.804, 0.866) &  0.554 &  4.47e-21* \\
 \hline
 Close by 1 to Previous & 0.810 (0.776, 0.845) &  0.533 &  2.42e-19* \\
 \hline
-Always EN or SN & 0.956 (0.947, 0.965) &  0.955 &  9.80e-01 \\
+Don't Mix & 0.956 (0.947, 0.965) &  0.955 &  9.80e-01 \\
 \hline
 Always Decrease & 0.108 (0.089, 0.127) &  0.245 &  1.45e-17* \\
 \hline

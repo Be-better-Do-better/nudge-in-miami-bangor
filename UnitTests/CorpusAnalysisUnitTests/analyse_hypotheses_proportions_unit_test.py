@@ -4,7 +4,7 @@ import numpy as np
 os.chdir('../..')
 from Auxiliaries.t_test import t_test
 from CorpusAnalyses.NextLevelPredition.analyse_hypotheses_proportions import calc_expected_proportion, calc_actual_proportions, extract_cs_levels_frequency, collect_cs_levels
-from Hypotheses.always_EN_or_SN import Always_EN_or_SN
+from Hypotheses.dont_mix import Always_EN_or_SN
 from Hypotheses.always_decreases import AlwaysDecrease
 
 """

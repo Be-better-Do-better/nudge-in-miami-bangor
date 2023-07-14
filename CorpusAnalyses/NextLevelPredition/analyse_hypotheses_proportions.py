@@ -12,7 +12,7 @@ from CorpusAnalyses.extract_cs_levels_frequency import extract_cs_levels_frequen
 from Auxiliaries.t_test import t_test
 from Auxiliaries.get_all_permutations import get_all_permutations
 from Classes.hypothesis import Hypothesis
-from Hypotheses.always_EN_or_SN import Always_EN_or_SN
+from Hypotheses.dont_mix import Always_EN_or_SN
 from Hypotheses.nudge import Nudge
 from Hypotheses.hypotheses import generate_hypotheses
 
